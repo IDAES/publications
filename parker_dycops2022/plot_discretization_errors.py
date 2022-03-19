@@ -32,18 +32,10 @@ VARIABLE_LABELS = [
 ]
 
 FILES_DISC_MAP = {
-    # These are the files for my original, simple simulation
-    #"300s_error_2_4_8_16_32.json": [2, 4, 8, 16],
-    #"300s_error_32_64.json": [32],
-    #"300s_error_64_128.json": [64],
-
-    # These are the files for the more complicated simulation with
-    # perturbed inputs.
-    "600s_inputs_2_4_8_16_32_64.json": [2, 4, 8, 16, 32],
-    "600s_inputs_64_128.json": [64],
+    "error_2_4_8_16.json": [2, 4, 8],
 }
 
-N_DISCRETIZATION_POINTS = [2, 4, 8, 16, 32, 64]
+N_DISCRETIZATION_POINTS = [2, 4, 8]
 
 
 def main():
