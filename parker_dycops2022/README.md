@@ -29,8 +29,7 @@ If the methodology or code here has been useful in your research, please cite:
 ```
 @article{parker2022,
 author={Robert B. Parker and Lorenz T. Biegler},
-title={Dynamic modeling and nonlinear model predictive control of a moving bed
-chemical looping combustion reactor},
+title={Dynamic modeling and nonlinear model predictive control of a moving bed chemical looping combustion reactor},
 journal={IFAC PapersOnLine},
 year={2022},
 }
