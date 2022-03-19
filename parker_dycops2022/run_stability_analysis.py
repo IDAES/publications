@@ -10,32 +10,32 @@ from pyomo.contrib.incidence_analysis.interface import (
 )
 from pyomo.dae.flatten import flatten_components_along_sets
 
-from workspace.mbclc.model import (
+from mbclc.model import (
     make_square_dynamic_model,
     make_square_model,
 )
-from workspace.mbclc.initialize import (
+from mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from workspace.mbclc.plot import (
+from mbclc.plot import (
     plot_outlet_states_over_time,
 )
-from workspace.common.initialize import (
+from common.initialize import (
     initialize_by_time_element,
     get_subsystems_along_time,
 )
-from workspace.common.dynamic_data import (
+from common.dynamic_data import (
     load_inputs_into_model,
 )
-from workspace.common.serialize.data_from_model import (
+from common.serialize.data_from_model import (
     get_structured_variables_from_model,
 )
-from workspace.common.serialize.interpolate import interpolate_data_onto_sets
-from workspace.common.serialize.integrate import integrate_variable_data
-from workspace.common.serialize.arithmetic import (
+from common.serialize.interpolate import interpolate_data_onto_sets
+from common.serialize.integrate import integrate_variable_data
+from common.serialize.arithmetic import (
     subtract_variable_data,
     sum_variable_data,
     multiply_variable_data,
@@ -45,14 +45,14 @@ from idaes.apps.caprese.categorize import (
     VariableCategory as VC,
     ConstraintCategory as CC,
 )
-from workspace.mbclc.results.dycops2022.model import (
+from model import (
     get_model_for_simulation,
 )
 
-from workspace.common.timing import HierarchicalTimer
+from common.timing import HierarchicalTimer
 
 TIMER = HierarchicalTimer()
-import workspace.common.initialize as initialize_module
+import common.initialize as initialize_module
 initialize_module.TIMER = TIMER
 
 
@@ -235,22 +235,22 @@ def main():
 
     model_kwds = {"horizon": horizon, "ntfe": ntfe}
     time_disc_list = [
-        #{"ntfe": 2},
-        #{"ntfe": 4},
-        #{"ntfe": 8},
+        {"ntfe": 2},
+        {"ntfe": 4},
+        {"ntfe": 8},
         {"ntfe": 16},
-        {"ntfe": 32},
+        #{"ntfe": 32},
         #{"ntfe": 64},
         #{"ntfe": 128},
     ]
     space_disc_list = [
-        #{"nxfe": 2},
-        #{"nxfe": 4},
-        #{"nxfe": 8},
-        #{"nxfe": 16},
+        {"nxfe": 2},
+        {"nxfe": 4},
+        {"nxfe": 8},
+        {"nxfe": 16},
         #{"nxfe": 32},
-        {"nxfe": 64},
-        {"nxfe": 128},
+        #{"nxfe": 64},
+        #{"nxfe": 128},
     ]
     data_list = []
     solve_kwds = {"tee": True}
@@ -349,6 +349,7 @@ def main():
     for name, errors in pde_errors.items():
         print(name, errors)
     fname = "_".join(["error"] + [str(d["ntfe"]) for d in time_disc_list])
+    fname += ".json"
     with open(fname, "w") as fp:
         json.dump(pde_errors, fp)
 

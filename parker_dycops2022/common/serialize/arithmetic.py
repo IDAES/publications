@@ -1,6 +1,6 @@
 import numpy as np
 from pyomo.core.base.set import Set
-from workspace.common.serialize.data_from_model import (
+from common.serialize.data_from_model import (
         apply_function_elementwise,
         _get_structured_variable_data_from_dict,
         )

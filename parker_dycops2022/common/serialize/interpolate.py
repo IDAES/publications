@@ -2,7 +2,7 @@ import itertools
 from scipy import interpolate
 import numpy as np
 
-from workspace.common.serialize.data_from_model import (
+from common.serialize.data_from_model import (
         apply_function_elementwise,
         _get_structured_variable_data_from_dict,
         )

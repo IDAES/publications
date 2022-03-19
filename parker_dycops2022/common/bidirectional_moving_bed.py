@@ -1,6 +1,6 @@
 # Import moving bed from workspace as unit changes in 1.13-dev broke
 # some of my code
-from workspace.common.unit_models.moving_bed import MBRData
+from common.unit_models.moving_bed import MBRData
 from idaes.core import (
         declare_process_block_class,
         ControlVolume1DBlock,

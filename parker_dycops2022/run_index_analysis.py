@@ -8,28 +8,28 @@ from pyomo.contrib.incidence_analysis.interface import (
     _generate_variables_in_constraints,
 )
 
-from workspace.mbclc.model import (
+from mbclc.model import (
     make_square_dynamic_model,
     make_square_model,
 )
-from workspace.mbclc.initialize import (
+from mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from workspace.mbclc.plot import (
+from mbclc.plot import (
     plot_outlet_states_over_time,
 )
-from workspace.common.initialize import initialize_by_time_element
+from common.initialize import initialize_by_time_element
 from idaes.apps.caprese.categorize import (
     VariableCategory as VC,
     ConstraintCategory as CC,
 )
-from workspace.common.dynamic_data import (
+from common.dynamic_data import (
     load_inputs_into_model,
 )
-from workspace.mbclc.results.dycops2022.model import (
+from model import (
     get_model_for_simulation,
 )
 

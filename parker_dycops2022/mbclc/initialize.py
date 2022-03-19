@@ -1,9 +1,9 @@
-from workspace.mbclc.model import (
+from mbclc.model import (
         make_model,
         fix_design_variables,
         fix_dynamic_inputs,
         )
-from workspace.common.dae_utils import (
+from common.dae_utils import (
         generate_discretization_components_along_set,
         generate_diff_deriv_disc_components_along_set,
         )

@@ -5,32 +5,32 @@ from pyomo.dae.flatten import flatten_dae_components
 from pyomo.util.subsystems import TemporarySubsystemManager
 from pyomo.common.collections import ComponentSet
 #from pyomo.common.timing import HierarchicalTimer
-from workspace.common.timing import HierarchicalTimer
-from workspace.common.initialize import initialize_by_time_element
+from common.timing import HierarchicalTimer
+from common.initialize import initialize_by_time_element
 
-import workspace.mbclc.model as model_module
-from workspace.mbclc.model import (
+import mbclc.model as model_module
+from mbclc.model import (
     make_square_dynamic_model,
     make_square_model,
     add_constraints_for_missing_variables,
 )
-import workspace.mbclc.initialize as initialize_module
-from workspace.mbclc.initialize import (
+import mbclc.initialize as initialize_module
+from mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from workspace.mbclc.plot import (
+from mbclc.plot import (
     plot_outlet_states_over_time,
     plot_inputs_over_time,
 )
-from workspace.mbclc.experiments.dynamic_opt.load_inputs import (
+from common.dynamic_data import (
     load_inputs_into_model,
     get_inputs_at_time,
 )
-import workspace.mbclc.results.dycops2022.model as dynopt_module
-from workspace.mbclc.results.dycops2022.model import (
+import model as dynopt_module
+from model import (
     get_steady_state_model,
     get_data_from_steady_model,
     get_model_for_dynamic_optimization,
@@ -38,10 +38,10 @@ from workspace.mbclc.results.dycops2022.model import (
     get_state_variable_names,
     get_tracking_cost_expressions,
 )
-from workspace.mbclc.results.dycops2022.scaling import (
+from scaling import (
     get_max_values_from_steady,
 )
-from workspace.mbclc.results.dycops2022.deserialize import (
+from deserialize import (
     get_variance_data,
     get_scaling_factor_data,
     get_variance_of_time_slices,

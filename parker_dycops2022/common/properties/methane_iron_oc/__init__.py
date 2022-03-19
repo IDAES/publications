@@ -10,15 +10,15 @@
 # Please see the files COPYRIGHT.md and LICENSE.md for full copyright and
 # license information.
 #################################################################################
-from workspace.common.properties.methane_iron_oc.gas_phase_thermo import (
+from common.properties.methane_iron_oc.gas_phase_thermo import (
     GasPhaseParameterBlock,
     GasPhaseStateBlock,
 )
-from workspace.common.properties.methane_iron_oc.solid_phase_thermo import (
+from common.properties.methane_iron_oc.solid_phase_thermo import (
     SolidPhaseParameterBlock,
     SolidPhaseStateBlock,
 )
-from workspace.common.properties.methane_iron_oc.hetero_reactions import (
+from common.properties.methane_iron_oc.hetero_reactions import (
     HeteroReactionParameterBlock,
     ReactionBlock,
 )
