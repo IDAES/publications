@@ -9,10 +9,22 @@ The files that produce the results are:
 - `run_stability_analysis.py`
 - `run_nmpc.py`
 
-All code should be run from this directory, as it relies on local
-imports.
-Subdirectories `common` and `mbclc` contain utility code and code to
-construct and initialize the MBCLC model, respectively.
+The code is structured as a Python package with a small `setup.py` so that
+functions and classes may be more easily imported by external scripts.
+Please run
+```
+python setup.py develop
+```
+to "install" the `parker-dycops2022` package.
+A `requirements.txt` file is provided with the environment in which this
+package was prepared.
+These requirements may be installed with
+```
+pip install -r requirements.txt
+```
+This may not be necessary, however, depending on your current environment,
+so we do not automatically install/enforce these requirements from
+`setup.py`.
 
 Because the stability analysis and NMPC scripts are time-consuming to
 run, sample data is provided:
