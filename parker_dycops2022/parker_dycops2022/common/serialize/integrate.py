@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import integrate
-from common.serialize.data_from_model import (
+from parker_dycops2022.common.serialize.data_from_model import (
         apply_function_elementwise,
         _get_structured_variable_data_from_dict,
         )

@@ -6,28 +6,28 @@ from pyomo.dae.flatten import flatten_dae_components
 from pyomo.util.subsystems import TemporarySubsystemManager
 from pyomo.common.collections import ComponentSet
 #from pyomo.common.timing import HierarchicalTimer
-from common.timing import HierarchicalTimer
-from common.initialize import initialize_by_time_element
+from parker_dycops2022.common.timing import HierarchicalTimer
+from parker_dycops2022.common.initialize import initialize_by_time_element
 
 import mbclc.model as model_module
-from mbclc.model import (
+from parker_dycops2022.mbclc.model import (
     make_square_dynamic_model,
     make_square_model,
     add_constraints_for_missing_variables,
 )
 import mbclc.initialize as initialize_module
-from mbclc.initialize import (
+from parker_dycops2022.mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from mbclc.plot import (
+from parker_dycops2022.mbclc.plot import (
     plot_outlet_states_over_time,
     plot_inputs_over_time,
     plot_outlet_data,
 )
-from common.dynamic_data import (
+from parker_dycops2022.common.dynamic_data import (
     load_inputs_into_model,
     get_inputs_at_time,
     interval_data_from_time_series,
@@ -35,7 +35,7 @@ from common.dynamic_data import (
     extend_time_series_data,
 )
 import model as dynopt_module
-from model import (
+from parker_dycops2022.model import (
     get_steady_state_model,
     get_data_from_steady_model,
     get_model_for_dynamic_optimization,
@@ -44,11 +44,11 @@ from model import (
     get_tracking_cost_expressions,
     get_nmpc_plant_model,
 )
-from scaling import (
+from parker_dycops2022.scaling import (
     get_max_values_from_steady,
 )
 # TODO: import scaling factors and variance
-from deserialize import (
+from parker_dycops2022.deserialize import (
     get_variance_data,
     get_scaling_factor_data,
     get_variance_of_time_slices,

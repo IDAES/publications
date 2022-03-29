@@ -1,9 +1,9 @@
-from mbclc.model import (
+from parker_dycops2022.mbclc.model import (
         make_model,
         fix_design_variables,
         fix_dynamic_inputs,
         )
-from common.dae_utils import (
+from parker_dycops2022.common.dae_utils import (
         generate_discretization_components_along_set,
         generate_diff_deriv_disc_components_along_set,
         )

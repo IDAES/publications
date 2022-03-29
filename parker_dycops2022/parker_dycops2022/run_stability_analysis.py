@@ -10,32 +10,32 @@ from pyomo.contrib.incidence_analysis.interface import (
 )
 from pyomo.dae.flatten import flatten_components_along_sets
 
-from mbclc.model import (
+from parker_dycops2022.mbclc.model import (
     make_square_dynamic_model,
     make_square_model,
 )
-from mbclc.initialize import (
+from parker_dycops2022.mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from mbclc.plot import (
+from parker_dycops2022.mbclc.plot import (
     plot_outlet_states_over_time,
 )
-from common.initialize import (
+from parker_dycops2022.common.initialize import (
     initialize_by_time_element,
     get_subsystems_along_time,
 )
-from common.dynamic_data import (
+from parker_dycops2022.common.dynamic_data import (
     load_inputs_into_model,
 )
-from common.serialize.data_from_model import (
+from parker_dycops2022.common.serialize.data_from_model import (
     get_structured_variables_from_model,
 )
-from common.serialize.interpolate import interpolate_data_onto_sets
-from common.serialize.integrate import integrate_variable_data
-from common.serialize.arithmetic import (
+from parker_dycops2022.common.serialize.interpolate import interpolate_data_onto_sets
+from parker_dycops2022.common.serialize.integrate import integrate_variable_data
+from parker_dycops2022.common.serialize.arithmetic import (
     subtract_variable_data,
     sum_variable_data,
     multiply_variable_data,
@@ -45,11 +45,11 @@ from idaes.apps.caprese.categorize import (
     VariableCategory as VC,
     ConstraintCategory as CC,
 )
-from model import (
+from parker_dycops2022.model import (
     get_model_for_simulation,
 )
 
-from common.timing import HierarchicalTimer
+from parker_dycops2022.common.timing import HierarchicalTimer
 
 TIMER = HierarchicalTimer()
 import common.initialize as initialize_module

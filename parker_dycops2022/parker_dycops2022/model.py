@@ -2,8 +2,8 @@ import pyomo.environ as pyo
 from pyomo.dae.flatten import flatten_dae_components
 from pyomo.common.collections import ComponentSet
 
-from common.timing import HierarchicalTimer
-from common.dynamic_data import (
+from parker_dycops2022.common.timing import HierarchicalTimer
+from parker_dycops2022.common.dynamic_data import (
     set_values,
     set_values_at_time,
     load_inputs_into_model,
@@ -12,7 +12,7 @@ from common.dynamic_data import (
     copy_values_from_time,
 )
 import mbclc.model as model_module
-from mbclc.model import (
+from parker_dycops2022.mbclc.model import (
     make_square_model,
     make_square_dynamic_model,
     add_constraints_for_missing_variables,
@@ -20,13 +20,13 @@ from mbclc.model import (
     ConstraintCategory as CC,
 )
 import mbclc.initialize as initialize_module
-from mbclc.initialize import (
+from parker_dycops2022.mbclc.initialize import (
     set_default_design_vars,
     set_default_inlet_conditions,
     initialize_steady,
     initialize_dynamic_from_steady,
 )
-from common.dae_utils import (
+from parker_dycops2022.common.dae_utils import (
     generate_diff_deriv_disc_components_along_set,
 )
 

@@ -26,11 +26,11 @@ import idaes.logger as idaeslog
 
 # Import unit model and property package from workspace as some of my
 # code broke when units were changed.
-from common.unit_models.moving_bed import MBR as MovingBed
+from parker_dycops2022.common.unit_models.moving_bed import MBR as MovingBed
 # Import Bidirectional Moving Bed
-from common.bidirectional_moving_bed import MBR as BiMovingBed
+from parker_dycops2022.common.bidirectional_moving_bed import MBR as BiMovingBed
 
-from common.properties.methane_iron_oc import (
+from parker_dycops2022.common.properties.methane_iron_oc import (
     GasPhaseParameterBlock,
     SolidPhaseParameterBlock,
     HeteroReactionParameterBlock,

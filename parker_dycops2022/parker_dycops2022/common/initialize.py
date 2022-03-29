@@ -10,7 +10,7 @@ from pyomo.core.expr.visitor import identify_variables
 
 from pyomo.contrib.incidence_analysis import IncidenceGraphInterface
 
-from common.timing import HierarchicalTimer
+from parker_dycops2022.common.timing import HierarchicalTimer
 
 
 TIMER = HierarchicalTimer()

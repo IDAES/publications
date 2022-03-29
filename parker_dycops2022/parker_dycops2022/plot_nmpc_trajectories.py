@@ -73,7 +73,7 @@ def main():
 
     state_ic = {
         name: ic_data[name]
-        if name is not "tracking_cost" else 0.0
+        if name != "tracking_cost" else 0.0
         for name in STATE_NAMES
     }
     input_ic = {name: ic_data[name] for name in INPUT_NAMES}
