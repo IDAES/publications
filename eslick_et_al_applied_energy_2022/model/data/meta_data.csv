@@ -1,0 +1,99 @@
+1JT66801S,m.fs_main.gross_power[:],SELECTED MEGAWATTS,MW
+1FWS-FWFLW-A,"m.fs_main.fs_blr.aECON.tube.properties[:,0].flow_mass",COMPENSATED FEEDWATER FLOW A,klb/hr
+1FWS-STMFLW-A,m.fs_main.fs_stc.turb.inlet_split.mixed_state[:].flow_mass,COMPENSATED STEAM FLOW A,KLB/HR
+1LDC-GROSS-MW,m.fs_main.gross_power[:],GROSS MEGAWATTS SIGNAL,MW
+1TCMVACPT2,m.fs_main.fs_stc.condenser.shell.properties_out[:].pressure,MT CONDENSER VACUUM 2,IN HG
+S11,m.fs_main.fs_stc.condenser.shell.properties_out[:].pressure,Condenser Pressure,IN HG
+5C0002FLOW,,CRH CNDNSATE RETURN TO CONDNSR,
+BAROMETRIC-PRESS,,BAROMETRIC PRESSURE,IN HG
+C19,m.fs_main.fs_stc.condenser.shell.properties_out[:].temperature,MAIN CONDENSER TEMPERATURE,DEG F
+C105,m.fs_main.fs_stc.fwh1.condense.tube.properties_out[:].temperature,LP HTR 1-1 CONT OUT TEMP,DEG F
+C205,m.fs_main.fs_stc.fwh2.condense.tube.properties_out[:].temperature,LP HTR 1-2 CONT OUT TEMP,DEG F
+C305,m.fs_main.fs_stc.fwh3.condense.tube.properties_out[:].temperature,LP HTR 1-3 CONT OUT TEMP,DEG F
+C411,m.fs_main.fs_stc.fwh4_deair.mixed_state[:].temperature,DEAERATOR DRAINS TEMPERATURE,DEG F
+C51,m.fs_main.fs_stc.cond_pump.control_volume.properties_out[:].pressure,COND HW PUMPS DISCH PRESSURE,PSIG
+CW119,,A CW PMP MTR BRG SVC WTR FLOW,kgal/min
+CW129,,B CW PMP MTR BRG SVC WTR FLOW,kgal/min
+CW213A,m.fs_main.fs_stc.condenser.tube.properties_in[:].temperature,MAIN COND WB AVG IN TEMP,DEG F
+CW216A,m.fs_main.fs_stc.condenser.tube.properties_out[:].temperature,MAIN COND WB AVG OUT TEMP,DEG F
+CW313,m.fs_main.fs_stc.aux_condenser.tube.properties_in[:].temperature,AUX CONDR WB INLET TEMPERATURE,DEG F
+CW316,m.fs_main.fs_stc.aux_condenser.tube.properties_out[:].temperature,AUX CONDR WB OUTLET TEMP,DEG F
+CW317-COND,m.fs_main.fs_stc.aux_condenser.tube.properties_in[:].flow_vol,CIRC WATER FLOW TO AUX COND,GPM
+D207,m.fs_main.fs_stc.fwh2.cooling.shell.properties_out[:].temperature,LP HTR 1-2 DRIPS TEMPERATURE,DEG F
+D607,m.fs_main.fs_stc.fwh6.cooling.shell.properties_out[:].temperature,HP HTR 1-6 DRIPS TEMPERATURE,DEG F
+DGS3,m.fs_main.fs_blr.aBoiler.flowrate_coal_raw[:],TOTAL FUEL HOURLY TOTAL COAL,TPH
+FW401,m.fs_main.fs_stc.booster.control_volume.properties_in[:].temperature,FEED WTR BSTR PUMP SUCTION TMP,DEG F
+FW402,m.fs_main.fs_stc.booster.control_volume.properties_in[:].pressure,FEED WTR BSTR PUMP SUCTION PRS,PSIG
+FW413,m.fs_main.fs_stc.booster.control_volume.properties_out[:].pressure,FWBP DISCH HEADER PRESSURE,PSIG
+FW451,m.fs_main.fs_stc.bfp.control_volume.properties_out[:].pressure,FEEDWATER PRESSURE,PSIG
+FW452,m.fs_main.fs_stc.bfp.control_volume.properties_out[:].temperature,FEEDWATER TEMPERATURE,DEG F
+FW4537-VACA,,BFPT COND VACUUM PRESS A,PSIA
+FW4537-VACB,,BFPT COND VACUUM PRESS B,PSIA
+FW4537-VACC,,BFPT COND VACUUM PRESS C,PSIA
+FW463,m.fs_main.fs_blr.Attemp.Water_inlet_state[:].flow_mass,MAIN STEAM ATTEMP FLOW,KLB/HR
+FW464,,MAIN STEAM ATTEMP SUPPLY T,DEG F
+FW468,,MAIN STEAM ATTEMP SUPPLY PRESS,PSIG
+FW606,m.fs_main.fs_stc.fwh6.desuperheat.tube.properties_out[:].temperature,HP HTR 1-6 OUTLET TEMPERATURE,DEG F
+FW611,m.fs_main.fs_blr.aECON.tube_inlet.pressure[:],ECON INLET PRESSURE,PSIG
+PERFTEST-D508,m.fs_main.fs_stc.fwh5.cooling.shell.properties_out[:].temperature,5 HTR FW DRAIN TEMP,DEG F
+PERFTEST-D608,m.fs_main.fs_stc.fwh6.cooling.shell.properties_out[:].temperature,6 HTR FW DRAIN TEMP,DEG F
+PERFTEST-FW503,m.fs_main.fs_stc.fwh5.cooling.tube.properties_in[:].temperature,5 HTR IN TEMP,DEG F
+PERFTEST-FW603,m.fs_main.fs_stc.fwh6.cooling.tube.properties_in[:].temperature,6 HTR IN TEMP,DEG F
+PERFTEST-FW608,,6 HTR FW OUT TEMP,DEG F
+PERFTEST-S501,m.fs_main.fs_stc.turb.ip_split[6].mixed_state[:].pressure,5 HTR EXTRACT STEAM PRESS PERF,PSIG
+PERFTEST-S633,m.fs_main.fs_stc.turb.ip_stages[1].control_volume.properties_in[:].pressure,HOT REHEAT PRESS,PSIG
+S105,m.fs_main.fs_stc.fwh1.condense.inlet_1.pressure[:],LP HTR 1-1 SHELL PRESSURE,PSIG
+S202,m.fs_main.fs_stc.turb.lp_split[4].mixed_state[:].temperature,LP HTR 1-2 EXTR TEMPERATURE,DEG F
+S212,m.fs_main.fs_stc.turb.lp_split[4].mixed_state[:].pressure,LP HTR 1-2 EXTR PRESSURE,PSIG
+S302,m.fs_main.fs_stc.turb.lp_split[2].mixed_state[:].temperature,LP HTR 1-3 EXTR TEMPERATURE,DEG F
+S312,m.fs_main.fs_stc.turb.lp_split[2].mixed_state[:].pressure,LP HTR 1-3 EXTR PRESSURE,PSIG
+S412,m.fs_main.fs_stc.turb.ip_split[9].mixed_state[:].pressure,DEAERATOR EXTR PRESSURE,PSIG
+S422,m.fs_main.fs_stc.turb.ip_split[9].mixed_state[:].pressure,LP STEAM TO BFPT PRESSURE,PSIG
+S423,m.fs_main.fs_stc.turb.ip_split[9].mixed_state[:].temperature,LP STEAM TO BFPT TEMPERATURE,DEG F
+S502,,HP HTR 1-5 EXTR TEMPERATURE,DEG F
+S602,,HP HTR 1-6 EXTR TEMPERATURE,DEG F
+S613,m.fs_main.fs_blr.aRH1.tube_inlet.pressure[:],COLD REHEAT PRESSURE,PSIG
+S614,m.fs_main.fs_stc.turb.hp_split[14].mixed_state[:].temperature,COLD REHEAT TEMP,DEG F
+S631,,REHEAT OUTLET TEMPERATURE,DEG F
+S633,m.fs_main.fs_blr.aRH2.tube_outlet.pressure[:],HOT REHEAT PRESSURE,PSIG
+S634,m.fs_main.fs_stc.turb.ip_stages[1].control_volume.properties_in[:].temperature,HOT REHEAT TEMPERATURE,DEG F
+S640,m.fs_main.fs_stc.turb.ip_stages[1].control_volume.properties_in[:].pressure,HOT REHEAT BOWL PRESSURE,PSIG
+S831,m.fs_main.fs_blr.aPlaten.control_volume.properties_out[:].temperature,MAIN STEAM TEMPERATURE,DEG F
+S833,m.fs_main.fs_blr.aPlaten.outlet.pressure[:],MAIN STEAM PRESSURE,PSIG
+S834,m.fs_main.fs_stc.turb.inlet_split.mixed_state[:].temperature,THROTTLE STEAM TEMPERATURE,DEG F
+S839C,m.fs_main.fs_stc.turb.throttle_valve[1].control_volume.properties_out[:].pressure,TURB FIRST STAGE PRESSURE,PSIG
+BG3506A,m.fs_main.fs_blr.aBoiler.fluegas_o2_pct_dry[:],1A FLUE GAS O2,percent
+BG3506B,m.fs_main.fs_blr.aBoiler.fluegas_o2_pct_dry[:],1B FLUE GAS O2,percent
+BA1T,m.fs_main.fs_blr.aBoiler.flowrate_TCA[:],TOTAL AIR FLOW,KLB/HR
+1FUE-TOTPA-FLOW,m.fs_main.fs_blr.flowrate_pa_total[:],TOTAL PRIMARY AIR FLOW,KLB/HR
+S801,m.fs_main.fs_blr.Waterwalls[14].control_volume.properties_out[:].pressure,DRUM PRESSURE,PSIG
+S804,m.fs_main.fs_blr.Waterwalls[14].control_volume.properties_out[:].temperature,STEAM DRUM STEAM TEMPERATURE,DEG F
+S811,"m.fs_main.fs_blr.aPSH.tube.properties[:,0].temperature",LOW TEMP SH OUT TEMPERATURE,DEG F
+BA2052,m.fs_main.fs_blr.aAPH.side_1_inlet.temperature[:],AIR HTR 1A GAS INLET TEMP,DEG F
+BA2552,m.fs_main.fs_blr.aAPH.side_1_inlet.temperature[:],AIR HTR 1B GAS INLET TEMP,DEG F
+BA2051,m.fs_main.fs_blr.aAPH.side_1_inlet.pressure[:],AIR HTR 1A GAS INLET PRESSURE,IN WC
+BA2551,m.fs_main.fs_blr.aAPH.side_1_inlet.pressure[:],AIR HTR 1B GAS INLET PRESSURE,IN WC
+BA2054,m.fs_main.fs_blr.aAPH.side_1_outlet.temperature[:],AIR HTR 1A GAS OUTLET TEMP,DEG F
+BA2554,m.fs_main.fs_blr.aAPH.side_1_outlet.temperature[:],AIR HTR 1B GAS OUTLET TEMP,DEG F
+BA2053,m.fs_main.fs_blr.aAPH.side_1_outlet.pressure[:],AIR HTR 1A GAS OUTLET PRESSURE,IN WC
+BA2553,m.fs_main.fs_blr.aAPH.side_1_outlet.pressure[:],AIR HTR 1B GAS OUTLET PRESSURE,IN WC
+BF2002,m.fs_main.fs_blr.aAPH.side_2_inlet.temperature[:],AIR HTR 1A PA INLET TEMP,DEG F
+BF2502,m.fs_main.fs_blr.aAPH.side_2_inlet.temperature[:],AIR HTR 1B PA INLET TEMP,DEG F
+BF2001,m.fs_main.fs_blr.aAPH.side_2_inlet.pressure[:],AIR HTR 1A PA INLET PRESSURE,IN WC
+BF2501,m.fs_main.fs_blr.aAPH.side_2_inlet.pressure[:],AIR HTR 1B PA INLET PRESSURE,IN WC
+BF2003,m.fs_main.fs_blr.aAPH.side_2_outlet.temperature[:],AIR HTR 1A PA OUTLET TEMP,DEG F
+BF2503,m.fs_main.fs_blr.aAPH.side_2_outlet.temperature[:],AIR HTR 1B PA OUTLET TEMP,DEG F
+BA2007,m.fs_main.fs_blr.aAPH.side_3_inlet.temperature[:],AIR HTR 1A SEC COLD END TEMP,DEG F
+BA2507,m.fs_main.fs_blr.aAPH.side_3_inlet.temperature[:],AIR HTR 1B SEC COLD END TEMP,DEG F
+BA1003,m.fs_main.fs_blr.aAPH.side_3_inlet.pressure[:],FD FAN 1A OUTLET PRESSURE,IN WC
+BA1503,m.fs_main.fs_blr.aAPH.side_3_inlet.pressure[:],FD FAN 1B OUTLET PRESSURE,IN WC
+BA2004,m.fs_main.fs_blr.aAPH.side_3_outlet.temperature[:],AIR HTR A SEC AIR OUTLET TEMP,DEG F
+BA2504,m.fs_main.fs_blr.aAPH.side_3_outlet.temperature[:],AIR HTR B SEC AIR OUTLET TEMP,DEG F
+BA2003,m.fs_main.fs_blr.aAPH.side_3_outlet.pressure[:],AIR HTR 1A AIR OUTLET PRESSURE,IN WC
+BA2503,m.fs_main.fs_blr.aAPH.side_3_outlet.pressure[:],AIR HTR 1B AIR OUTLET PRESSURE,IN WC
+BG3502,m.fs_main.fs_blr.aBoiler.side_2_outlet.pressure[:],HT SH GAS OUTLET PRESSURE,IN WC
+BG3503,m.fs_main.fs_blr.aRH1.shell_outlet.pressure[:],REHEAT GAS OUTLET PRESSURE,IN WC
+BG3505,m.fs_main.fs_blr.aECON.shell_inlet.pressure[:],ECONOMIZER GAS INLET PRESSURE,IN WC
+FW711,"m.fs_main.fs_blr.aECON.tube.properties[:,0].temperature",ECON OUTLET A TEMPERATURE,DEG F
+FW712,"m.fs_main.fs_blr.aECON.tube.properties[:,0].temperature",ECON OUTLET A TEMPERATURE,DEG F
+num_mills,m.fs_main.fs_blr.num_mills,Number of mills in service,
