@@ -5,10 +5,10 @@ from parker_cce2022.mbclc_sim.config import get_temperature_list, get_nxfe_list
 from parker_cce2022.mbclc_sim.full_space import solve_full_space
 from parker_cce2022.mbclc_sim.reduced_space import solve_reduced_space
 
-from workspace.common.serialize.data_from_model import (
+from parker_cce2022.common.serialize.data_from_model import (
         get_structured_variables_from_model,
         )
-from workspace.common.serialize.arithmetic import (
+from parker_cce2022.common.serialize.arithmetic import (
         subtract_variable_data,
         abs_variable_data,
         max_variable_data,

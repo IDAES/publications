@@ -27,7 +27,7 @@ from idaes.core.util.model_statistics import (
         large_residuals_set,
         )
 
-from workspace.mbclc import (
+from parker_cce2022.mbclc import (
         add_constraints_for_missing_variables,
         make_square_model,
         get_block_triangularization,
@@ -44,13 +44,13 @@ from workspace.mbclc import (
         initialize_steady_without_solid_temperature,
         )
 
-from workspace.common.dae_utils import (
+from parker_cce2022.common.dae_utils import (
         generate_discretization_components_along_set,
         )
-from workspace.common.expr_util import (
+from parker_cce2022.common.expr_util import (
         generate_trivial_constraints,
         )
-from workspace.common.categorize import (
+from parker_cce2022.common.categorize import (
         categorize_dae_variables_and_constraints,
         VariableCategory,
         ConstraintCategory,

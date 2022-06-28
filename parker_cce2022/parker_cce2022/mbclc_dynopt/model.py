@@ -6,14 +6,14 @@ from idaes.apps.caprese.categorize import (
     ConstraintCategory,
 )
 
-from workspace.common.dynamic_data import (
+from parker_cce2022.common.dynamic_data import (
     get_tracking_cost_expression,
 )
-from workspace.mbclc.model import (
+from parker_cce2022.mbclc.model import (
     make_square_model,
     make_square_dynamic_model,
 )
-from workspace.mbclc.initialize import (
+from parker_cce2022.mbclc.initialize import (
     initialize_steady,
     set_default_design_vars,
     set_default_inlet_conditions,
