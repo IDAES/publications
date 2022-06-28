@@ -15,6 +15,7 @@ from pyomo.util.calc_var_value import calculate_variable_from_constraint
 from pyomo.util.subsystems import TemporarySubsystemManager
 from pyomo.common.timing import HierarchicalTimer
 from parker_cce2022.distill.distill_DAE import make_model
+from parker_cce2022.distill.config import get_ipopt
 
 import time as time_lib
 
@@ -70,7 +71,7 @@ def run_optimization(instance):
     solver_module.TIMER = timer
     t_start = time_lib.time()
     timer.start("full-space-solve")
-    solver=SolverFactory('ipopt')
+    solver = get_ipopt()
     results = solver.solve(instance,tee=True)
     timer.stop("full-space-solve")
     t_end = time_lib.time()
