@@ -12,6 +12,7 @@ from parker_cce2022.mbclc_dynopt.model import (
 )
 from parker_cce2022.mbclc_dynopt.series_data import TimeSeriesTuple
 from parker_cce2022.mbclc_dynopt.solve_data import SolveData
+from parker_cce2022.mbclc_dynopt.config import get_ipopt
 
 import pyomo.repn.plugins.ampl.ampl_ as nl_module
 
@@ -67,7 +68,7 @@ def run_dynamic_optimization(
             m.fs.MB.gas_inlet.flow_mol[t].setlb(0.0)
             m.fs.MB.gas_inlet.flow_mol[t].setub(200.0)
 
-    ipopt = pyo.SolverFactory("ipopt")
+    ipopt = get_ipopt()
     TIMER.start("solve")
     if ipopt_options is None:
         ipopt_options = {
