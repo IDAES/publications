@@ -4,8 +4,8 @@ from matplotlib.colors import ListedColormap
 import matplotlib.patches as mpatches
 import numpy as np
 
-fullspace_fname = "full_space_sweep_eqcon.json"
-implicit_fname = "implicit_sweep_eqcon.json"
+fullspace_fname = "full_space_sweep_boundcon.json"
+implicit_fname = "implicit_sweep_boundcon.json"
 
 solid_flow_name = "fs.MB.solid_phase.properties[*,1.0].flow_mass"
 conversion_name = "fs.MB.solid_phase.reactions[*,0.0].OC_conv"
@@ -189,7 +189,7 @@ def main():
     if show:
         figure.show()
     if save:
-        figure.savefig("eqcon_sweep" + ".pdf", transparent=True)
+        figure.savefig("boundcon_sweep" + ".pdf", transparent=True)
 
 
 if __name__ == "__main__":
