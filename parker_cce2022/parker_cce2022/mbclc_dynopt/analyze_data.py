@@ -116,6 +116,16 @@ def main():
         if time_ifcn < time_full:
             n_implicit_faster += 1
 
+    # Get problem instances that converge to same solution.
+    for res_full, res_ifcn in zip(fullspace_both_solved, implicit_both_solved):
+        _, _, (_, inputs_full, _) = res_full
+        _, _, (_, inputs_ifcn, _) = res_ifcn
+        assert set(inputs_full[0].keys()) == set(inputs_ifcn[0].keys())
+        assert inputs_full[1] == inputs_ifcn[1]
+        for key in inputs_full[0].keys():
+            full_data = inputs_full[key]
+            ifcn_data = inputs_ifcn[key]
+
     n_converged_fullspace = len(fullspace_results_solved)
     n_converged_implicit = len(implicit_results_solved)
 
