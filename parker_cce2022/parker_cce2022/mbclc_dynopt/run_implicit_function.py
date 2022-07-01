@@ -315,6 +315,16 @@ if __name__ == "__main__":
         setpoint_list=sp_state_list,
     )
 
+    ipopt_options = {
+        "tol": 5e-5,
+        "inf_pr_output": "internal",
+        "dual_inf_tol": 1e2,
+        "constr_viol_tol": 1e2,
+        "compl_inf_tol": 1e2,
+        "nlp_scaling_method": "user-scaling",
+        #"max_cpu_time": 120.0,
+    }
+
     use_cyipopt = True
     status, input_data, time = run_dynamic_optimization(
         initial_conditions=ic_dae_data,
@@ -326,6 +336,7 @@ if __name__ == "__main__":
         differential_bounds=False,
         input_bounds=True,
         use_cyipopt=use_cyipopt,
+        ipopt_options=ipopt_options,
     )
     for name, values in input_data.data.items():
         print(name)

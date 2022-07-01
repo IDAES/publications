@@ -128,7 +128,6 @@ if __name__ == "__main__":
         nxfe=nxfe,
     )
     sp_input_map = {"fs.MB.solid_inlet.flow_mass[*]": 700.0}
-    #sp_input_map = {"fs.MB.solid_inlet.flow_mass[*]": 591.4}
     sp_dof_names = ["fs.MB.gas_inlet.flow_mol[*]"]
     #sp_dof_names = ["fs.MB.solid_inlet.flow_mass[*]"]
     # Note that this key needs to have index [*,0], not [*,0.0]
