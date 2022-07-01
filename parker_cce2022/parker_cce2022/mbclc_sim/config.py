@@ -1,3 +1,4 @@
+import os
 import pyomo.environ as pyo
 
 
@@ -20,19 +21,12 @@ def get_nominal_values():
 
 
 def get_ipopt():
-    ipopt = pyo.SolverFactory(
-        "ipopt",
-        # Hard-code an executable so we can use the same IPOPT version
-        executable="/home/rparker1/Solvers/CoinIpopt/build/bin/ipopt",
-    )
-    if ipopt.available(exception_flag=False):
-        return ipopt
+    ipopt_exec = os.environ.get("IPOPT_EXECUTABLE", None)
+    if ipopt_exec is not None:
+        ipopt = pyo.SolverFactory("ipopt", executable=ipopt_exec)
     else:
-        return pyo.SolverFactory(
-            "ipopt",
-            # Hard-code an executable so we can use the same IPOPT version
-            executable="/home/robert/solvers/CoinIpopt/build/bin/ipopt",
-        )
+        ipopt = pyo.SolverFactory("ipopt")
+    return ipopt
 
 
 def get_cyipopt(options=None):
