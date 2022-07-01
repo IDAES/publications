@@ -70,6 +70,7 @@ def analyze_results(
     out_fname=None,
     show=False,
     save=False,
+    display_all_solvetimes=False,
 ):
     with open(fullspace_fname, "r") as fp:
         fullspace_data = json.load(fp)
@@ -256,9 +257,19 @@ def analyze_results(
     fullspace_solvetimes = [
         time for _, _, (_, _, time) in fullspace_results_solved
     ]
+    # Sometimes may be useful to see the solve times of each instance
+    # that converges.
+    if display_all_solvetimes:
+        print("fullspace times")
+        for params, _, (_, _, time) in fullspace_results_solved:
+            print(params, time)
     implicit_solvetimes = [
         time for _, _, (_, _, time) in implicit_results_solved
     ]
+    if display_all_solvetimes:
+        print("implicit times")
+        for params, _, (_, _, time) in implicit_results_solved:
+            print(params, time)
     ave_time_fullspace = sum(fullspace_solvetimes)/len(fullspace_solvetimes)
     ave_time_implicit = sum(implicit_solvetimes)/len(implicit_solvetimes)
 
@@ -330,6 +341,10 @@ def analyze_results(
 
 
 def main():
+    display_all_solvetimes = False
+    print("################################")
+    print("# Equality-constrained results #")
+    print("################################")
     fullspace_fname = "full_space_sweep_eqcon.json"
     implicit_fname = "implicit_sweep_eqcon.json"
     out_fname = "eqcon_sweep.pdf"
@@ -339,8 +354,13 @@ def main():
         out_fname=out_fname,
         show=False,
         save=True,
+        display_all_solvetimes=display_all_solvetimes,
     )
 
+    print()
+    print("#############################")
+    print("# Bound-constrained results #")
+    print("#############################")
     fullspace_fname = "full_space_sweep_boundcon.json"
     implicit_fname = "implicit_sweep_boundcon.json"
     out_fname = "boundcon_sweep.pdf"
@@ -350,6 +370,7 @@ def main():
         out_fname=out_fname,
         show=False,
         save=True,
+        display_all_solvetimes=display_all_solvetimes,
     )
 
 
