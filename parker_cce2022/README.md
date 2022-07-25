@@ -1,4 +1,9 @@
-This directory contains code necessary to reproduce the results in the paper "An implicit function formulation for optimization of discretized index-1 differential algebraic systems"
+This directory contains code necessary to reproduce the results in the paper
+"An implicit function formulation for optimization of discretized index-1
+differential algebraic systems"
+
+Authors: Robert Parker, Bethany Nicholson, John Siirola, Carl Laird, and Lorenz
+Biegler
 
 ### Environment
 The environment in which this code was tested has been frozen in the
