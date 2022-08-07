@@ -332,7 +332,7 @@ def analyze_results(
     figure.tight_layout()
 
     if show:
-        figure.show()
+        plt.show()
     if save:
         if out_fname is not None:
             figure.savefig(out_fname, transparent=True)
@@ -352,8 +352,8 @@ def main():
         fullspace_fname,
         implicit_fname,
         out_fname=out_fname,
-        show=False,
-        save=True,
+        show=True,
+        save=False,
         display_all_solvetimes=display_all_solvetimes,
     )
 
@@ -368,8 +368,8 @@ def main():
         fullspace_fname,
         implicit_fname,
         out_fname=out_fname,
-        show=False,
-        save=True,
+        show=True,
+        save=False,
         display_all_solvetimes=display_all_solvetimes,
     )
 
