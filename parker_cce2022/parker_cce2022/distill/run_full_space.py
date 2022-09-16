@@ -132,7 +132,6 @@ def main():
     discretize_model(instance)
     add_objective(instance)
     data = run_optimization(instance)
-    import pdb; pdb.set_trace()
 
 
 if __name__ == "__main__":
