@@ -43,7 +43,7 @@ def get_ipopt_options():
     return {
             "nlp_scaling_method": "user-scaling",
             "inf_pr_output": "internal",
-            "tol": 5e-5,
+            "tol": 4e-4,
             "dual_inf_tol": 1.0,
             "constr_viol_tol": 1.0,
             "compl_inf_tol": 1.0,
