@@ -25,11 +25,11 @@ from idaes.core.util.model_statistics import (
 import idaes.logger as idaeslog
 
 
-from nmpc_examples.nmpc.model_helper import DynamicModelHelper
-from nmpc_examples.nmpc.cost_expressions import (
+from parker_focapo2023.mpc.model_helper import DynamicModelHelper
+from parker_focapo2023.mpc.cost_expressions import (
     get_tracking_cost_from_constant_setpoint,
 )
-from nmpc_examples.nmpc.input_constraints import (
+from parker_focapo2023.mpc.input_constraints import (
     get_piecewise_constant_constraints,
 )
 
