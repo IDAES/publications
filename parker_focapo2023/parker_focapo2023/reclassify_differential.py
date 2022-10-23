@@ -12,11 +12,6 @@ from parker_focapo2023.plot import (
     plot_incidence_matrix,
 )
 
-from workspace.common.categorize import (
-    categorize_dae_variables_and_constraints,
-    VariableCategory,
-    ConstraintCategory,
-)
 from workspace.common.dae_utils import (
     DifferentialHelper,
     generate_diff_deriv_disc_components_along_set,
@@ -35,6 +30,11 @@ from pyomo.contrib.incidence_analysis.interface import (
 
 import scipy.sparse as sps
 
+
+# TODO: Is this file necessary?
+# No. It is not used by the rest of the code. However, it may contain
+# some analysis/procedure that I have not entirely superceded with
+# the common/dae_utils.py file, so I am leaving it here for now.
 
 def reclassify_differential():
     model_version = ModelVersion.IDAES_1_7

@@ -12,11 +12,6 @@ from parker_focapo2023.plot import (
     plot_incidence_matrix,
 )
 
-from workspace.common.categorize import (
-    categorize_dae_variables_and_constraints,
-    VariableCategory,
-    ConstraintCategory,
-)
 from workspace.common.dae_utils import (
     DifferentialHelper,
     generate_diff_deriv_disc_components_along_set,

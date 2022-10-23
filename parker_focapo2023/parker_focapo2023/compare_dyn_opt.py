@@ -16,12 +16,6 @@ from parker_focapo2023.config import (
     get_dark_color,
 )
 
-from workspace.common.categorize import (
-    categorize_dae_variables_and_constraints,
-    VariableCategory,
-    ConstraintCategory,
-)
-
 import pyomo.environ as pyo
 from pyomo.common.collections import ComponentSet, ComponentMap
 from pyomo.dae.flatten import flatten_dae_components
