@@ -56,4 +56,5 @@ author={Robert B. Parker and Bethany L. Nicholson and John D. Siirola and Carl D
 journal={Computers and Chemical Engineering},
 year={2022},
 }
+```
 Volume and issue numbers will be added when available.
