@@ -59,3 +59,5 @@ journal={Computer Aided Chemical Engineering},
 year={2023},
 }
 ```
+Issue, volume, and information about the conference proceedings will be added when
+they are available.
