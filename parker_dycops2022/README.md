@@ -39,10 +39,15 @@ and `plot_nmpc_trajectories.py` files.
 
 If the methodology or code here has been useful in your research, please cite:
 ```
-@article{parker2022,
+@article{parker_dycops2022,
 author={Robert B. Parker and Lorenz T. Biegler},
-title={Dynamic modeling and nonlinear model predictive control of a moving bed chemical looping combustion reactor},
-journal={IFAC PapersOnLine},
-year={2022},
+title = {Dynamic Modeling and Nonlinear Model Predictive Control of a Moving Bed Chemical Looping Combustion Reactor},
+journal = {IFAC-PapersOnLine},
+volume = {55},
+number = {7},
+pages = {400-405},
+year = {2022},
+note = {13th IFAC Symposium on Dynamics and Control of Process Systems, including Biosystems DYCOPS 2022},
+issn = {2405-8963},
 }
 ```
