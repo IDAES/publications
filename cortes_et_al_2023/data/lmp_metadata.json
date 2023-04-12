@@ -1,0 +1,450 @@
+{
+    "CAISO_NP15_2019": {
+        "ng_price": 3.87,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "CAISO_NP15_2022": {
+        "ng_price": 7.47,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "CAISO_ZP26_2019": {
+        "ng_price": 3.87,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "CAISO_ZP26_2022": {
+        "ng_price": 7.47,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "CAISO_SP15_2019": {
+        "ng_price": 3.87,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "CAISO_SP15_2022": {
+        "ng_price": 7.47,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_NORTH_2019": {
+        "ng_price": 2.39,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_NORTH_2022": {
+        "ng_price": 7.05,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_SOUTH_2019": {
+        "ng_price": 2.39,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_SOUTH_2022": {
+        "ng_price": 7.05,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_WEST_2019": {
+        "ng_price": 2.39,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_WEST_2022": {
+        "ng_price": 7.05,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_HOUSTON_2019": {
+        "ng_price": 2.39,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ERCOT_HOUSTON_2022": {
+        "ng_price": 7.05,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ISO_NE_2019": {
+        "ng_price": 4.50,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "ISO_NE_2022": {
+        "ng_price": 10.76,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "NYISO_2019": {
+        "ng_price": 3.05,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "NYISO_2022": {
+        "ng_price": 7.57,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_INDIANA_2019": {
+        "ng_price": 2.73,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_INDIANA_2022": {
+        "ng_price": 8.04,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_LOUISIANA_2019": {
+        "ng_price": 2.73,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_LOUISIANA_2022": {
+        "ng_price": 8.04,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_MINNESOTA_2019": {
+        "ng_price": 3.73,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MISO_MINNESOTA_2022": {
+        "ng_price": 8.04,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "PJM_WEST_2019": {
+        "ng_price": 2.43,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "PJM_WEST_2022": {
+        "ng_price": 7.04,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "SPP_NORTH_2019": {
+        "ng_price": 2.75,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "SPP_NORTH_2022": {
+        "ng_price": 8.21,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "SPP_SOUTH_2019": {
+        "ng_price": 2.83,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "SPP_SOUTH_2022": {
+        "ng_price": 7.61,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "historical",
+        "description": ""
+    },
+    "MiNg_$100_CAISO_2035": {
+        "ng_price": 2.26,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$150_CAISO_2035": {
+        "ng_price": 2.26,
+        "ng_price_co2_tax_cap97":0.24,
+        "ng_price_co2_tax_cap98":0.16,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$100_ERCOT_2035": {
+        "ng_price": 2.64,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$150_ERCOT_2035": {
+        "ng_price": 2.64,
+        "ng_price_co2_tax_cap97":0.24,
+        "ng_price_co2_tax_cap98":0.16,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$100_MISO-W_2035": {
+        "ng_price": 1.69,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$150_MISO-W_2035": {
+        "ng_price": 2.01,
+        "ng_price_co2_tax_cap97":0.24,
+        "ng_price_co2_tax_cap98":0.16,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$100_NYISO_2035": {
+        "ng_price": 1.12,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$150_NYISO_2035": {
+        "ng_price": 1.14,
+        "ng_price_co2_tax_cap97":0.24,
+        "ng_price_co2_tax_cap98":0.16,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$100_PJM-W_2035": {
+        "ng_price": 1.42,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "nrel",
+        "description": ""
+    },
+    "MiNg_$150_PJM-W_2035": {
+        "ng_price": 1.43,
+        "ng_price_co2_tax_cap97":0.24,
+        "ng_price_co2_tax_cap98":0.16,
+        "group": "nrel",
+        "description": ""
+    },
+    "BaseCase_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighWind_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighSolar_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "WinterNY_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "BaseCaseTax_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighWindTax_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighSolarTax_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "WinterNYTax_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "BaseCaseCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighWindCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighSolarCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "WinterNYCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "princeton",
+        "description": ""
+    },
+    "BaseCaseTaxCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighWindTaxCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "HighSolarTaxCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "WinterNYTaxCapRes_2030": {
+        "ng_price": 2.94,
+        "ng_price_co2_tax_cap97":0.10,
+        "ng_price_co2_tax_cap98":0.06,
+        "group": "princeton",
+        "description": ""
+    },
+    "ERCOT_0": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "o3",
+        "description": "One of the original 3 data sets"
+    },
+    "ERCOT_100": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "o3",
+        "description": "One of the original 3 data sets"
+    },
+    "CAISO_100": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.16,
+        "ng_price_co2_tax_cap98":0.11,
+        "group": "o3",
+        "description": "One of the original 3 data sets"
+    },
+    "NETL_ERCOT_GEN_0": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.00,
+        "ng_price_co2_tax_cap98":0.00,
+        "group": "netl",
+        "description": "NETL ERCOT 2035 GEN $0/tonne CO2 tax"
+    },
+    "NETL_ERCOT_GEN_25": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.044,
+        "ng_price_co2_tax_cap98":0.029,
+        "group": "netl",
+        "description": "NETL ERCOT 2035 GEN $25/tonne CO2 tax"
+    },
+    "NETL_ERCOT_GEN_50": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.088,
+        "ng_price_co2_tax_cap98":0.059,
+        "group": "netl",
+        "description": "NETL ERCOT 2035 GEN $50/tonne CO2 tax"
+    },
+    "NETL_ERCOT_GEN_100": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.177,
+        "ng_price_co2_tax_cap98":0.118,
+        "group": "netl",
+        "description": "NETL ERCOT 2035 GEN $100/tonne CO2 tax"
+    },
+    "NETL_ERCOT_GEN_250": {
+        "ng_price": 4.42,
+        "ng_price_co2_tax_cap97":0.441,
+        "ng_price_co2_tax_cap98":0.294,
+        "group": "netl",
+        "description": "NETL ERCOT 2035 GEN $250/tonne CO2 tax"
+    }
+}

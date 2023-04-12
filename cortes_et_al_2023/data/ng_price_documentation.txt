@@ -1,0 +1,22 @@
+The natural gas prices for historical LMPs where taken from the eia.gov 
+website.  For 2019, the anual price of gas for power production was used.
+Since the data for 2022 is incloplete the average monthly available for
+January to August was used.  Data for some months and some states was 
+withheld so the average of monthly data may exclude some months.
+
+Regardless of the gas use (power production or hydrogen production) the
+power price was used.  There does not seem to be a major differnce between
+power and industiral use analysis, and assuming the same price greatly
+simplifies the analysis.
+
+The following state data was used:
+  * California -> CIASO 
+  * Texas -> ERCOT (all regions)
+  * Massachusetts -> ISO New England
+  * New York -> ISO NY
+  * Indiana -> MYSO_INDIANA
+  * Indiana (Louisiana Not Available) -> MYSO_LOUISIANA
+  * Indiana (Minnesota Not Available) -> MYSO_MINNESOTA
+  * Pennsylvania -> PJM_WEST
+  * South Dakota -> SPP_NORTH
+  * Kansas (OK not available) -> SPP_SOUTH
