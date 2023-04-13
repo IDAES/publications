@@ -1,0 +1,282 @@
+GAMS 41.3.0  0f17a8d6 Nov 28, 2022          DEX-DEG x86 64bit/macOS - 03/12/23 15:28:12 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+
+
+COMPILATION TIME     =        0.493 SECONDS     58 MB  41.3.0 0f17a8d6 DEX-DEG
+GAMS 41.3.0  0f17a8d6 Nov 28, 2022          DEX-DEG x86 64bit/macOS - 03/12/23 15:28:12 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE GAMS_MODEL Using MINLP From line 245191
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS      61,261     SINGLE EQUATIONS       61,261
+BLOCKS OF VARIABLES      52,561     SINGLE VARIABLES       52,561
+NON ZERO ELEMENTS       681,347     NON LINEAR N-Z          8,760
+CODE LENGTH             175,200     CONSTANT POOL           8,782     DISCRETE VARIABLES     35,040
+
+
+GENERATION TIME      =        0.391 SECONDS    108 MB  41.3.0 0f17a8d6 DEX-DEG
+GAMS 41.3.0  0f17a8d6 Nov 28, 2022          DEX-DEG x86 64bit/macOS - 03/12/23 15:28:12 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE GAMS_MODEL Using MINLP From line 245191
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   GAMS_MODEL          OBJECTIVE  GAMS_OBJECTIVE
+     TYPE    MINLP               DIRECTION  MINIMIZE
+     SOLVER  DICOPT              FROM LINE  245191
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      8 Integer Solution
+**** OBJECTIVE VALUE              -12.5934
+
+ RESOURCE USAGE, LIMIT         35.968 10000000000.000
+ ITERATION COUNT, LIMIT     10350    2147483647
+ EVALUATION ERRORS              0             0
+-------------------------------------------------------------------------------
+Dicopt 2         41.3.0 0f17a8d6 Nov 28, 2022          DEG x86 64bit/macOS    
+-------------------------------------------------------------------------------
+by Aldo Vecchietti, Director del Instituto INGAR,
+   CONICET, UTN, Santa Fe, Argentina
+by Ignacio E. Grossmann, Chemical Engineering Faculty,
+   Carnegie Mellon University, Pittsburgh, PA, USA
+-------------------------------------------------------------------------------
+Reading parameter(s) from "/Users/john/git/workspace/tasks/sofc_paper/src/temp/dicopt.opt"
+*** Warning Read from empty file or string
+Finished reading from "/Users/john/git/workspace/tasks/sofc_paper/src/temp/dicopt.opt"
+ 
+ 
+    C O N O P T 3   version 3.17N
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 52561 variables and 61261 constraints
+    with 681347 Jacobian elements, 8760 of which are nonlinear.
+    The Hessian of the Lagrangian has 8760 elements on the diagonal,
+    0 elements below the diagonal, and 8760 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147483647 to 1000000000.
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  2
+ 
+ 
+ ** Optimal solution. Reduced gradient less than tolerance.
+ 
+ 
+ CONOPT time Total                           21.413 seconds
+   of which: Function evaluations             0.670 =  3.1%
+             1st Derivative evaluations       0.127 =  0.6%
+ 
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.93 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 46.03 Mb (peak 46.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.0.0 link memory 1.87 Mb (peak 12.99 Mb)
+--- Starting Cplex
+
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 3.17sec (det. 1298.50 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.03sec (det. 82.20 ticks)
+
+
+Proven optimal solution
+MIP Solution:          -14.579541    (3340 iterations, 0 nodes)
+Final Solve:           -14.579541    (0 iterations)
+
+Best possible:         -14.579541
+Absolute gap:           -0.000000
+Relative gap:           -0.000000
+
+--- DICOPT: Setting up next NLP
+ 
+ 
+    C O N O P T 3   version 3.17N
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 52561 variables and 61261 constraints
+    with 681347 Jacobian elements, 8760 of which are nonlinear.
+    The Hessian of the Lagrangian has 8760 elements on the diagonal,
+    0 elements below the diagonal, and 8760 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147480203 to 1000000000.
+ 
+                   Pre-triangular equations:   43740
+                   Post-triangular equations:  1
+ 
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+ 
+ CONOPT time Total                            2.273 seconds
+   of which: Function evaluations             0.163 =  7.2%
+             1st Derivative evaluations       0.094 =  4.1%
+ 
+--- GMO Resort Time 7ms
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.28 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 52.03 Mb (peak 52.57 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.0.0 link memory 2.14 Mb (peak 14.59 Mb)
+--- Starting Cplex
+
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 3.66sec (det. 2043.46 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.03sec (det. 93.21 ticks)
+
+
+Proven optimal solution
+MIP Solution:          -12.593363    (3411 iterations, 0 nodes)
+Final Solve:           -12.593363    (0 iterations)
+
+Best possible:         -12.593363
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- DICOPT: Setting up next NLP
+ 
+ 
+    C O N O P T 3   version 3.17N
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 52561 variables and 61261 constraints
+    with 681347 Jacobian elements, 8760 of which are nonlinear.
+    The Hessian of the Lagrangian has 8760 elements on the diagonal,
+    0 elements below the diagonal, and 8760 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147476738 to 1000000000.
+ 
+                   Pre-triangular equations:   43740
+                   Post-triangular equations:  1
+ 
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+ 
+ CONOPT time Total                            0.343 seconds
+   of which: Function evaluations             0.016 =  4.7%
+             1st Derivative evaluations       0.007 =  2.0%
+ 
+--- GMO Resort Time 9ms
+--- GAMS/Cplex Link licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.63 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 57.54 Mb (peak 58.14 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.0.0 link memory 2.41 Mb (peak 16.20 Mb)
+--- Starting Cplex
+
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 4.68sec (det. 4880.92 ticks)
+
+--- Fixing integer variables and solving final LP...
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.03sec (det. 104.00 ticks)
+
+
+Proven optimal solution
+MIP Solution:          -12.593232    (3433 iterations, 0 nodes)
+Final Solve:           -12.593232    (0 iterations)
+
+Best possible:         -12.593232
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- DICOPT: Setting up next NLP
+ 
+ 
+    C O N O P T 3   version 3.17N
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 52561 variables and 61261 constraints
+    with 681347 Jacobian elements, 8760 of which are nonlinear.
+    The Hessian of the Lagrangian has 8760 elements on the diagonal,
+    0 elements below the diagonal, and 8760 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147473301 to 1000000000.
+ 
+                   Pre-triangular equations:   43740
+                   Post-triangular equations:  1
+ 
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+ 
+ CONOPT time Total                            0.340 seconds
+   of which: Function evaluations             0.018 =  5.3%
+             1st Derivative evaluations       0.006 =  1.8%
+ 
+--- DICOPT: Stopped on NLP worsening
+
+      The search was stopped because the objective function
+      of the NLP subproblems started to deteriorate.
+
+--- DICOPT: Best integer solution found: -12.593363
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0     ERRORS
+GAMS 41.3.0  0f17a8d6 Nov 28, 2022          DEX-DEG x86 64bit/macOS - 03/12/23 15:28:12 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+**** REPORT FILE SUMMARY
+
+results /Users/john/git/workspace/tasks/sofc_paper/src/temp/results.dat
+statresults /Users/john/git/workspace/tasks/sofc_paper/src/temp/resultsstat.dat
+
+
+EXECUTION TIME       =       37.732 SECONDS    108 MB  41.3.0 0f17a8d6 DEX-DEG
+
+
+USER: Medium MUD - 10 User License                   G211229|0002CN-GEN
+      U.S. Department of Energy, National Energy Technology LaborDC9138
+
+
+**** FILE SUMMARY
+
+Input      /Users/john/git/workspace/tasks/sofc_paper/src/temp/model.gms
+Output     /Users/john/git/workspace/tasks/sofc_paper/src/temp/output.lst
