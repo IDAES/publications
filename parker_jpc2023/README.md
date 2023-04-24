@@ -17,6 +17,6 @@ The results and code listings presented in the paper were prepared using
 Pyomo 6.5.1 and IDAES 2.0.0. The full Python environment used can be found
 in `requirements.txt` and can be installed with:
 ```
-$ pipe install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 IPOPT 3.13.2 was used for all square and optimization solves.
