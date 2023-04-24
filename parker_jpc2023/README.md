@@ -1,6 +1,6 @@
 ## Code to produce results of "Dynamic Modeling and NMPC..."
 
-Parker, Nicholson, Siirola, and Biegler. Submitted to *J. Process Control*.
+Parker, Nicholson, Siirola, and Biegler. Submitted to J. Process Control.
 
 Organization of the code:
 - `parker_jpc2023` is a small Python package that can be installed with:
