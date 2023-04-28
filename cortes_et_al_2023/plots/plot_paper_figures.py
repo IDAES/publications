@@ -1,6 +1,6 @@
 '''
 This script reproduces plots from 'Market Optimization and Technoeconomic Analysis of Hydrogen-Electricity Coproduction Systems'
-This excludes Figure 1 - process concept flow sheets 
+This excludes Figure 1 - process concept flow sheets and SI 6-7 (located in breakeven plots folder)
 '''
 
 from ies_model_library import *
@@ -150,6 +150,181 @@ os.rename('feature_correlation.csv', 'figures/feature_correlation.csv')
 
 ####################################################################################
 ## SI FIGURES
+
+# S1 - Marginal Cost of power from NGCC system 
+case0 = Case0() 
+
+case0.plot_marginal_cost(fdest = 'figures/figures1')
+
+# S2 - Marginal cost of power for SOFC system/rSOC in power mode
+
+case1 = Case1()
+
+case1.plot_marginal_cost(fdest = 'figures/figures2')
+
+# S3 - Marginal cost of hydrogen for standalone SOEC/rSOC in hydrogen mode
+
+case4 = Case4()
+
+case4.plot_marginal_cost(fdest_h2 = 'figures/figures3')
+
+# S4-5 - Marginal cost of power and hydrogen for NGCC + SOEC
+
+case3 = Case3() 
+
+case3.plot_marginal_cost(fdest = 'figures/figures4', fdest_h2 = 'figures/figures5')
+
+# S9-10 - Capacity factors of all systems at $2/kg hydrogen 
+plt_signal_comparison('../market_results_20', PROFIT = False, CAPACITY = True, OUTPUT = False, sort = 'median', relative_case = None, save = True)
+
+# rename 
+os.rename('all_p capacity_20_median.png', 'figures/figures9.png')
+os.rename('all_p capacity_20_median.pdf', 'figures/figures9.pdf')
+
+os.rename('all_h capacity_20_median.png', 'figures/figures10.png')
+os.rename('all_h capacity_20_median.pdf', 'figures/figures10.pdf')
+
+# S11-13 - Profit and capacity factors of all systems at $1/kg hydrogen 
+plt_signal_comparison('../market_results_10', PROFIT = True, CAPACITY = True, OUTPUT = False, sort = 'median', relative_case = None, save = True)
+
+# rename 
+os.rename('all_profit_10_median.png', 'figures/figures11.png')
+os.rename('all_profit_10_median.pdf', 'figures/figures11.pdf')
+
+os.rename('all_p capacity_10_median.png', 'figures/figures12.png')
+os.rename('all_p capacity_10_median.pdf', 'figures/figures12.pdf')
+
+os.rename('all_h capacity_10_median.png', 'figures/figures13.png')
+os.rename('all_h capacity_10_median.pdf', 'figures/figures13.pdf')
+
+# S14-16 - Profit and capacity factors of all systems at $1.5/kg hydrogen 
+plt_signal_comparison('../market_results_15', PROFIT = True, CAPACITY = True, OUTPUT = False, sort = 'median', relative_case = None, save = True)
+
+# rename 
+os.rename('all_profit_15_median.png', 'figures/figures14.png')
+os.rename('all_profit_15_median.pdf', 'figures/figures14.pdf')
+
+os.rename('all_p capacity_15_median.png', 'figures/figures15.png')
+os.rename('all_p capacity_15_median.pdf', 'figures/figures15.pdf')
+
+os.rename('all_h capacity_15_median.png', 'figures/figures16.png')
+os.rename('all_h capacity_15_median.pdf', 'figures/figures16.pdf')
+
+# S17-19 - Profit and capacity factors of all systems at $2.5/kg hydrogen 
+plt_signal_comparison('../market_results_25', PROFIT = True, CAPACITY = True, OUTPUT = False, sort = 'median', relative_case = None, save = True)
+
+# rename 
+os.rename('all_profit_25_median.png', 'figures/figures17.png')
+os.rename('all_profit_25_median.pdf', 'figures/figures17.pdf')
+
+os.rename('all_p capacity_25_median.png', 'figures/figures18.png')
+os.rename('all_p capacity_25_median.pdf', 'figures/figures18.pdf')
+
+os.rename('all_h capacity_25_median.png', 'figures/figures19.png')
+os.rename('all_h capacity_25_median.pdf', 'figures/figures19.pdf')
+
+# S20-22 - Profit and capacity factors of all systems at $3/kg hydrogen 
+plt_signal_comparison('../market_results_30', PROFIT = True, CAPACITY = True, OUTPUT = False, sort = 'median', relative_case = None, save = True)
+
+# rename 
+os.rename('all_profit_30_median.png', 'figures/figures20.png')
+os.rename('all_profit_30_median.pdf', 'figures/figures20.pdf')
+
+os.rename('all_p capacity_30_median.png', 'figures/figures21.png')
+os.rename('all_p capacity_30_median.pdf', 'figures/figures21.pdf')
+
+os.rename('all_h capacity_30_median.png', 'figures/figures22.png')
+os.rename('all_h capacity_30_median.pdf', 'figures/figures22.pdf')
+
+# S23-27 - System profit for all hydrogen prices, sorted chronologically 
+
+# $1/kg
+plt_signal_comparison('../market_results_10', PROFIT = True, CAPACITY = False, OUTPUT = False, sort = 'source', relative_case = None, save = True)
+
+# move to figure folder 
+os.rename('all_profit_10_source.png', 'figures/figures23.png')
+os.rename('all_profit_10_source.pdf', 'figures/figures23.pdf')
+
+# $1.5/kg
+plt_signal_comparison('../market_results_15', PROFIT = True, CAPACITY = False, OUTPUT = False, sort = 'source', relative_case = None, save = True)
+
+# move to figure folder 
+os.rename('all_profit_15_source.png', 'figures/figures24.png')
+os.rename('all_profit_15_source.pdf', 'figures/figures24.pdf')
+
+# $2/kg 
+plt_signal_comparison('../market_results_20', PROFIT = True, CAPACITY = False, OUTPUT = False, sort = 'source', relative_case = None, save = True)
+
+# move to figure folder 
+os.rename('all_profit_20_source.png', 'figures/figures25.png')
+os.rename('all_profit_20_source.pdf', 'figures/figures25.pdf')
+
+# $2.5/kg 
+plt_signal_comparison('../market_results_25', PROFIT = True, CAPACITY = False, OUTPUT = False, sort = 'source', relative_case = None, save = True)
+
+# move to figure folder 
+os.rename('all_profit_25_source.png', 'figures/figures26.png')
+os.rename('all_profit_25_source.pdf', 'figures/figures26.pdf')
+
+# $3/kg 
+plt_signal_comparison('../market_results_30', PROFIT = True, CAPACITY = False, OUTPUT = False, sort = 'source', relative_case = None, save = True)
+
+# move to figure folder 
+os.rename('all_profit_30_source.png', 'figures/figures27.png')
+os.rename('all_profit_30_source.pdf', 'figures/figures27.pdf')
+
+# S28 - profit scatter at $2/kg of dip test p-value and median LMP 
+plot_profit_scatter(h2_price = 20, x = 'log10p', y = 'medianlmp', side_by_side = True, save = True)
+
+# move to figure folder 
+os.rename('NGCC_log10p_medianlmp_20.png', 'figures/figures28_topleft.png')
+os.rename('NGCC_log10p_medianlmp_20.pdf', 'figures/figures28_topleft.pdf')
+
+os.rename('SOFC_log10p_medianlmp_20.png', 'figures/figures28_bottomleft.png')
+os.rename('SOFC_log10p_medianlmp_20.pdf', 'figures/figures28_bottomleft.pdf')
+
+os.rename('NGCC+SOEC_log10p_medianlmp_20.png', 'figures/figures28_topright.png')
+os.rename('NGCC+SOEC_log10p_medianlmp_20.pdf', 'figures/figures28_topright.pdf')
+
+os.rename('rSOC_log10p_medianlmp_20.png', 'figures/rSOC_log10p_medianlmp_20.png')
+os.rename('rSOC_log10p_medianlmp_20.pdf', 'figures/rSOC_log10p_medianlmp_20.pdf')
+
+os.rename('SOFC+SOEC_log10p_medianlmp_20.png', 'figures/figures28_bottomright.png')
+os.rename('SOFC+SOEC_log10p_medianlmp_20.pdf', 'figures/figures28_bottomright.pdf')
+
+os.rename('SOEC_log10p_medianlmp_20.png', 'figures/SOEC_log10p_medianlmp_20.png')
+os.rename('SOEC_log10p_medianlmp_20.pdf', 'figures/SOEC_log10p_medianlmp_20.pdf')
+
+# S29-32 - percentage of scenarios with positive profits for hydogen prices $1, $1.5, $2.5, $3.0
+
+# $1/kg
+plot_positiveprofit_barplot(h2_price = 10, save = True)
+
+# move to figures folder 
+os.rename('positiveprofits_bar_10.png', 'figures/figures29.png')
+os.rename('positiveprofits_bar_10.pdf', 'figures/figures29.pdf')
+
+# $1.5/kg
+plot_positiveprofit_barplot(h2_price = 15, save = True)
+
+# move to figures folder 
+os.rename('positiveprofits_bar_15.png', 'figures/figures30.png')
+os.rename('positiveprofits_bar_15.pdf', 'figures/figures30.pdf')
+
+# $2.5/kg
+plot_positiveprofit_barplot(h2_price = 25, save = True)
+
+# move to figures folder 
+os.rename('positiveprofits_bar_25.png', 'figures/figures31.png')
+os.rename('positiveprofits_bar_25.pdf', 'figures/figures31.pdf')
+
+# $3/kg
+plot_positiveprofit_barplot(h2_price = 30, save = True)
+
+# move to figures folder 
+os.rename('positiveprofits_bar_30.png', 'figures/figures32.png')
+os.rename('positiveprofits_bar_30.pdf', 'figures/figures32.pdf')
+
 
 
 
