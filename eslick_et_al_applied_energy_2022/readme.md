@@ -7,9 +7,9 @@ Eslick, J.C., M.A. Zamarripa, J. Ma, M. Wang, I. Bhattacharya, B. Rychener,
     P. Pinkston, D. Bhattacharyya, S.E. Zitney, A.P. Burgard, D.C. Miller.
     "Predictive modeling of a subcritical pulverized-coal power plant for
     optimization: Parameter estimation, validation, and application."
-    Applied Energy, 319, 2022.
+    Applied Energy, 319, 2022. https://doi.org/10.1016/j.apenergy.2022.119226
 
-https://doi.org/10.1016/j.apenergy.2022.119226  
+https://www.osti.gov/pages/biblio/1889452
 
 IDAES Version Requirement
 -------------------------
