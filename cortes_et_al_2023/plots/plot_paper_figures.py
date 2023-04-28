@@ -98,6 +98,38 @@ os.rename('SOEC_gasprice_medianlmp_20.pdf', 'figures/figure5_middleleft.pdf')
 os.rename('SOEC_gasprice_medianlmp_30.pdf', 'figures/figure5_bottomleft.pdf')
 
 # move all other ones into folder 
+os.rename('NGCC+SOEC_gasprice_medianlmp_10.png', 'figures/NGCC+SOEC_gasprice_medianlmp_10.png')
+os.rename('NGCC+SOEC_gasprice_medianlmp_20.png', 'figures/NGCC+SOEC_gasprice_medianlmp_20.png')
+os.rename('NGCC+SOEC_gasprice_medianlmp_30.png', 'figures/NGCC+SOEC_gasprice_medianlmp_30.png')
+
+os.rename('NGCC_gasprice_medianlmp_10.png', 'figures/NGCC_gasprice_medianlmp_10.png')
+os.rename('NGCC_gasprice_medianlmp_20.png', 'figures/NGCC_gasprice_medianlmp_20.png')
+os.rename('NGCC_gasprice_medianlmp_30.png', 'figures/NGCC_gasprice_medianlmp_30.png')
+
+os.rename('NGCC+SOEC_gasprice_medianlmp_10.pdf', 'figures/NGCC+SOEC_gasprice_medianlmp_10.pdf')
+os.rename('NGCC+SOEC_gasprice_medianlmp_20.pdf', 'figures/NGCC+SOEC_gasprice_medianlmp_20.pdf')
+os.rename('NGCC+SOEC_gasprice_medianlmp_30.pdf', 'figures/NGCC+SOEC_gasprice_medianlmp_30.pdf')
+
+os.rename('NGCC_gasprice_medianlmp_10.pdf', 'figures/NGCC_gasprice_medianlmp_10.pdf')
+os.rename('NGCC_gasprice_medianlmp_20.pdf', 'figures/NGCC_gasprice_medianlmp_20.pdf')
+os.rename('NGCC_gasprice_medianlmp_30.pdf', 'figures/NGCC_gasprice_medianlmp_30.pdf')
+
+os.rename('rSOC_gasprice_medianlmp_10.png', 'figures/rSOC_gasprice_medianlmp_10.png')
+os.rename('rSOC_gasprice_medianlmp_20.png', 'figures/rSOC_gasprice_medianlmp_20.png')
+os.rename('rSOC_gasprice_medianlmp_30.png', 'figures/rSOC_gasprice_medianlmp_30.png')
+
+os.rename('SOFC_gasprice_medianlmp_10.png', 'figures/SOFC_gasprice_medianlmp_10.png')
+os.rename('SOFC_gasprice_medianlmp_20.png', 'figures/SOFC_gasprice_medianlmp_20.png')
+os.rename('SOFC_gasprice_medianlmp_30.png', 'figures/SOFC_gasprice_medianlmp_30.png')
+
+os.rename('rSOC_gasprice_medianlmp_10.pdf', 'figures/rSOC_gasprice_medianlmp_10.pdf')
+os.rename('rSOC_gasprice_medianlmp_20.pdf', 'figures/rSOC_gasprice_medianlmp_20.pdf')
+os.rename('rSOC_gasprice_medianlmp_30.pdf', 'figures/rSOC_gasprice_medianlmp_30.pdf')
+
+os.rename('SOFC_gasprice_medianlmp_10.pdf', 'figures/SOFC_gasprice_medianlmp_10.pdf')
+os.rename('SOFC_gasprice_medianlmp_20.pdf', 'figures/SOFC_gasprice_medianlmp_20.pdf')
+os.rename('SOFC_gasprice_medianlmp_30.pdf', 'figures/SOFC_gasprice_medianlmp_30.pdf')
+
 
 # figure 6 - parity plots for lienar regression 
 results = perform_regression_full()
