@@ -555,9 +555,9 @@ def plot_profit_scatter(fdest_data = 'formatted_raw_data.csv', x = 'log10p', y =
         for i in range(len(profit)):
             # if points are positive make them the corresponding technology color, if not make them grey 
             if profit[i] >= 0:
-                axs[0].scatter(xlist[i], ylist[i], facecolor = colors[c], edgecolor = 'k', s = abs(profit[i])*5, zorder = 2)
+                axs[1].scatter(xlist[i], ylist[i], facecolor = colors[c], edgecolor = 'k', s = abs(profit[i])*5, zorder = 2)
             else:
-                axs[1].scatter(xlist[i], ylist[i], edgecolor = 'k', facecolor = 'gray', s = abs(profit[i])*5, zorder = 2)
+                axs[0].scatter(xlist[i], ylist[i], edgecolor = 'k', facecolor = 'gray', s = abs(profit[i])*5, zorder = 2)
 
         # titles and axes labels 
         if h2_price == 0:
