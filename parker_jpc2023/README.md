@@ -20,3 +20,20 @@ in `requirements.txt` and can be installed with:
 $ pip install -r requirements.txt
 ```
 IPOPT 3.13.2 was used for all square and optimization solves.
+
+### Citation
+If you use this code or the underlying `pyomo.contrib.mpc` software in
+your research, please cite the paper:
+```bibtex
+@article{parker2023mpc,
+title = {Model predictive control simulations with block-hierarchical differential-algebraic process models},
+journal = {Journal of Process Control},
+volume = {132},
+pages = {103113},
+year = {2023},
+issn = {0959-1524},
+doi = {https://doi.org/10.1016/j.jprocont.2023.103113},
+url = {https://www.sciencedirect.com/science/article/pii/S0959152423002007},
+author = {Robert B. Parker and Bethany L. Nicholson and John D. Siirola and Lorenz T. Biegler},
+}
+```
