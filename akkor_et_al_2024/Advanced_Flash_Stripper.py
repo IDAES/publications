@@ -115,7 +115,7 @@ class PZ_AFSData(UnitModelBlockData):
 
         self.stripper = PZPackedColumn(
             intercooler=False,
-            has_pressure_change=False,
+            has_pressure_change=True,
             vapor_phase=self.config.vapor_phase,
             liquid_phase=self.config.liquid_phase,
         )
@@ -155,9 +155,9 @@ class PZ_AFSData(UnitModelBlockData):
             doc="Composition calculation for the feed to flash tank",
         )
         def flash_feed_composition_eq(blk, j):
-            return blk.flash_tank.feed_properties[0].mole_frac_comp[j] * (
-                blk.stripper.liquid_properties[0, 0].flow_mol + blk.F_hot
-            ) == (
+            return blk.flash_tank.feed_properties[0].mole_frac_comp[
+                j
+            ] * blk.flash_tank.feed_properties[0].flow_mol == (
                 blk.stripper.liquid_properties[0, 0].mole_frac_comp[j]
                 * blk.stripper.liquid_properties[0, 0].flow_mol
                 + blk.F_hot * blk.abs_x[j]
@@ -172,9 +172,9 @@ class PZ_AFSData(UnitModelBlockData):
 
         @self.Constraint(doc="Feed temperature calculation")
         def flash_feed_T_eq(blk):
-            return blk.flash_tank.feed_properties[0].temperature * (
-                blk.F_hot + blk.stripper.liquid_properties[0, 0].flow_mol
-            ) == (
+            return blk.flash_tank.feed_properties[
+                0
+            ].temperature * blk.flash_tank.feed_properties[0].flow_mol == (
                 blk.T_hot * blk.F_hot
                 + blk.stripper.liquid_properties[0, 0].flow_mol
                 * blk.stripper.liquid_properties[0, 0].temperature
@@ -241,9 +241,16 @@ class PZ_AFSData(UnitModelBlockData):
 
         # packing parameters for the stripper (random packing)
         blk.stripper.del_component(blk.stripper.a)
-        blk.stripper.a = Param(initialize=250, doc="Specific area (m2/m3)")
+        blk.stripper.a = Param(
+            initialize=250, mutable=True, doc="Specific area (m2/m3)"
+        )
         blk.stripper.del_component(blk.stripper.void)
-        blk.stripper.void = Param(initialize=0.97, doc="Void fraction")
+        blk.stripper.void = Param(initialize=0.97, mutable=True, doc="Void fraction")
+        blk.stripper.del_component(blk.stripper.P_drop_z)
+        blk.stripper.P_drop_z = Param(
+            initialize=0.3,
+            mutable=True,
+        )
 
         # list of variables to be fixed for the first step of initialization
         base_vars = [
@@ -278,6 +285,8 @@ class PZ_AFSData(UnitModelBlockData):
                 c.deactivate()
             if c.local_name in energy_balance_eqs:
                 c.deactivate()
+            if c.local_name == "pressure_drop_eq":
+                c.deactivate()
 
         blk.stripper.flooding_velocity.fix()
         blk.stripper.flooding_velocity_eq.deactivate()
@@ -310,6 +319,9 @@ class PZ_AFSData(UnitModelBlockData):
 
         for c in blk.stripper.component_objects(Constraint):
             if c.local_name in energy_balance_eqs:
+                c.activate()
+            if c.local_name == "pressure_drop_eq":
+                blk.stripper.isobaric_gas_eq.deactivate()
                 c.activate()
 
         with idaeslog.solver_log(init_log, idaeslog.DEBUG) as slc:
