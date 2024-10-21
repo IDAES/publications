@@ -54,7 +54,7 @@ from Advanced_Flash_Stripper import PZ_AFS
 def flowheet_model(flue_gas, scale, optimization, split_train):
     # import solver
     solver = SolverFactory("gams")
-    solver.options = {"solver": "conopt"}
+    solver.options = {"solver": "conopt3"}
     # create model
     m = ConcreteModel()
     m.fs = FlowsheetBlock(dynamic=False)
@@ -147,21 +147,22 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
         results = solver.solve(m)
         print("Absorber scale up, step 4: " + results.solver.termination_condition)
 
-        if flue_gas == "coal":
-            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(1000)
-            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(5000)
-            results = solver.solve(m)
-            print("Absorber scale up, step 5: " + results.solver.termination_condition)
-
-            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(3200)
-            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(16000)
-            results = solver.solve(m)
-            print("Absorber scale up, step 5: " + results.solver.termination_condition)
-
-        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(4200)
-        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(21000)
+        # if flue_gas == "coal":
+        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(500)
+        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(2500)
         results = solver.solve(m)
-        print("Absorber scale up, step 6: " + results.solver.termination_condition)
+        print("Absorber scale up, step 5: " + results.solver.termination_condition)
+
+        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(3200)
+        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(16000)
+        results = solver.solve(m)
+        print("Absorber scale up, step 5: " + results.solver.termination_condition)
+
+        if flue_gas == "ngcc":
+            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(4200)
+            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(21000)
+            results = solver.solve(m)
+            print("Absorber scale up, step 6: " + results.solver.termination_condition)
 
         m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(6760)
         m.fs.absorber.liquid_properties[0, N].flow_mol.fix(33800)
@@ -357,8 +358,8 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
                 )
 
     # report results
-    for v in m.component_data_objects(Var):
-        print(v.name + ": " + str(v.value))
+    # for v in m.component_data_objects(Var):
+    #     print(v.name + ": " + str(v.value))
     print(results.solver.termination_condition)
     print(f"DoFs: {degrees_of_freedom(m)}")
 
@@ -422,9 +423,9 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
     if value(m.fs.tmin_ex3_1.expr) < 0 or value(m.fs.tmin_ex3_2.expr) < 0:
         print("Warning: Tmin violated for exchanger 3")
     if m.fs.M_w.value < 0:
-        print("Make-up of water is negative: " + str(m.M_w.value))
+        print("Make-up of water is negative: " + str(m.fs.M_w.value))
     if m.fs.M_pz.value < 0:
-        print("Make-up of PZ is negative: " + str(m.M_pz.value))
+        print("Make-up of PZ is negative: " + str(m.fs.M_pz.value))
     if (
         m.fs.absorber.liquid_properties[0, N].mole_frac_comp["CO2"].value
         / 2
