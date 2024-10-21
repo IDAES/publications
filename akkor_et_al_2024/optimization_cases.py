@@ -60,10 +60,8 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
     print("Stripper flooding calculations: " + results.solver.termination_condition)
 
     m.absorber.length.unfix()
-    m.afs.stripper.length.unfix()
-    m.afs.stripper.length.setlb(1)
     results = solver.solve(m)
-    print("Free column lengths: " + results.solver.termination_condition)
+    print("Free column length: " + results.solver.termination_condition)
 
     m.absorber.diameter.unfix()
 
@@ -71,7 +69,7 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.absorber.flooding_ub_con = Constraint(
         m.absorber.length_domain, rule=absorber_flooding_ub
@@ -81,7 +79,7 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.absorber.flooding_lb_con = Constraint(
         m.absorber.length_domain, rule=absorber_flooding_lb
@@ -112,7 +110,7 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
     m.bypass1.unfix()
     m.bypass1.setlb(0)
     m.bypass1.setub(1)
-
+    m.T_warm.setlb(120 + 273)
     results = solver.solve(m)
     print("Free bypass ratios: " + results.solver.termination_condition)
 
@@ -121,7 +119,6 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
     m.absorber.T_intercooler.unfix()
     m.absorber.liquid_properties[0, num_segments].temperature.unfix()
     m.M_w.setlb(0)
-    m.T_warm.setlb(110 + 273)
     results = solver.solve(m)
     print(
         "Free heater/cooler outlet temperatures: "
@@ -134,7 +131,7 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_ub_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_ub
@@ -144,7 +141,7 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_lb_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_lb
@@ -165,6 +162,15 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
     print("Free solvent flowrate: " + results.solver.termination_condition)
 
     m.del_component(m.capture_con)
+    m.capture_con = Constraint(
+        expr=m.afs.stripper.vapor_properties[0, num_segments].flow_mol_comp["CO2"]
+        / m.absorber.vapor_properties[0, 0].flow_mol_comp["CO2"]
+        >= 0.94
+    )
+    results = solver.solve(m)
+    print("Update capture constraint: " + results.solver.termination_condition)
+
+    m.del_component(m.capture_con)
     m.T_warm.setlb(None)
     m.capture_con = Constraint(
         expr=m.afs.stripper.vapor_properties[0, num_segments].flow_mol_comp["CO2"]
@@ -174,9 +180,9 @@ def optimize_coal_pilot_plant(m, solver, num_segments):
     results = solver.solve(m)
     print("Update capture constraint: " + results.solver.termination_condition)
 
-    m.afs.stripper.length.setlb(2)
+    m.afs.stripper.length.unfix()
     results = solver.solve(m)
-    print("Bound on min column length: " + results.solver.termination_condition)
+    print("Free column length: " + results.solver.termination_condition)
 
     return m, results
 
@@ -225,10 +231,8 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
     print("Free solvent flowrate: " + results.solver.termination_condition)
 
     m.absorber.length.unfix()
-    m.afs.stripper.length.unfix()
-    m.afs.stripper.length.setlb(2)
     results = solver.solve(m)
-    print("Free column lengths: " + results.solver.termination_condition)
+    print("Free column length: " + results.solver.termination_condition)
 
     m.absorber.diameter.unfix()
 
@@ -236,7 +240,7 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.absorber.flooding_ub_con = Constraint(
         m.absorber.length_domain, rule=absorber_flooding_ub
@@ -246,7 +250,7 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.absorber.flooding_lb_con = Constraint(
         m.absorber.length_domain, rule=absorber_flooding_lb
@@ -264,7 +268,7 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_ub_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_ub
@@ -274,7 +278,7 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_lb_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_lb
@@ -291,6 +295,7 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
     m.absorber.T_intercooler.unfix()
     m.absorber.liquid_properties[0, num_segments].temperature.unfix()
     m.M_w.setlb(0)
+    m.T_warm.setlb(60 + 273)
     results = solver.solve(m)
     print(
         "Free heater/cooler outlet temperatures: "
@@ -328,6 +333,11 @@ def optimize_ngcc_pilot_plant(m, solver, num_segments):
         + results.solver.termination_condition
     )
 
+    m.afs.stripper.length.unfix()
+    m.T_warm.setlb(None)
+    results = solver.solve(m)
+    print("Free column lengths: " + results.solver.termination_condition)
+
     return m, results
 
 
@@ -360,7 +370,6 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
     m.T_hot.unfix()
     m.T_hot.setub(156 + 273)
     m.A_heater.setlb(0)
-    m.T_warm.setlb(110 + 273)
     results = solver.solve(m)
     print("Free heater outlet: " + results.solver.termination_condition)
 
@@ -387,10 +396,8 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
     )
 
     m.absorber.length.unfix()
-    m.afs.stripper.length.unfix()
-    m.afs.stripper.length.setlb(2)
     results = solver.solve(m)
-    print("Free column lengths: " + results.solver.termination_condition)
+    print("Free column length: " + results.solver.termination_condition)
 
     m.absorber.diameter.unfix()
     m.absorber.del_component(m.absorber.flooding_lb_con)
@@ -400,7 +407,7 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.absorber.flooding_ub_con = Constraint(
         m.absorber.length_domain, rule=abs_flooding_ub
@@ -410,7 +417,7 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.absorber.flooding_lb_con = Constraint(
         m.absorber.length_domain, rule=abs_flooding_lb
@@ -428,7 +435,7 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_ub_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_ub
@@ -438,7 +445,7 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_lb_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_lb
@@ -463,25 +470,16 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
     results = solver.solve(m)
     print("Free solvent flowrate: " + results.solver.termination_condition)
 
-    m.absorber.vapor_properties[0, 0].flow_mol.fix(20000)
-    results = solver.solve(m)
-    print("Increase plant scale: " + results.solver.termination_condition)
-
-    m.absorber.vapor_properties[0, 0].flow_mol.fix(22500)
-    results = solver.solve(m)
-    print("Increase plant scale: " + results.solver.termination_condition)
-
     m.bypass1.unfix()
     m.bypass1.setlb(0)
     m.bypass1.setub(1)
     m.bypass2.unfix()
     m.bypass2.setlb(0)
     m.bypass2.setub(1)
-
+    m.T_warm.setlb(110 + 273)
     results = solver.solve(m)
     print("Free bypasses: " + results.solver.termination_condition)
 
-    m.T_warm.setlb(None)
     m.M_w.setlb(0)
     m.del_component(m.capture_con)
     m.capture_con = Constraint(
@@ -492,7 +490,12 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
     results = solver.solve(m)
     print("Update capture constraint: " + results.solver.termination_condition)
 
+    m.afs.stripper.length.unfix()
+    results = solver.solve(m)
+    print("Free column length: " + results.solver.termination_condition)
+
     if not split_train:
+        m.T_warm.setlb(None)
         m.absorber.vapor_properties[0, 0].flow_mol.fix(27000)
         results = solver.solve(m)
         print("Increase plant scale: " + results.solver.termination_condition)
@@ -505,25 +508,35 @@ def optimize_coal_commercial_plant(m, solver, num_segments, split_train):
         results = solver.solve(m)
         print("Increase plant scale: " + results.solver.termination_condition)
 
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(28300)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29000)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29100)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29500)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29700)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
         m.absorber.vapor_properties[0, 0].flow_mol.fix(30000)
         results = solver.solve(m)
         print("Increase plant scale: " + results.solver.termination_condition)
 
     if split_train:
-        for i in range(0, num_segments + 1):
-            m.absorber.liquid_properties[0, i].temperature.setlb(273.15)
-
+        m.T_warm.setlb(None)
         m.absorber.vapor_properties[0, 0].flow_mol.fix(15000)
         results = solver.solve(m)
         print("Split train: " + results.solver.termination_condition)
-
-        m.absorber.diameter.setub(25)
-        results = solver.solve(m)
-        print("Diameter upper bound: " + results.solver.termination_condition)
-
-        m.absorber.diameter.setub(20)
-        results = solver.solve(m)
-        print("Diameter upper bound: " + results.solver.termination_condition)
 
     return m, results
 
@@ -575,10 +588,8 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
     print("Free heat exchanger outlets: " + results.solver.termination_condition)
 
     m.absorber.length.unfix()
-    m.afs.stripper.length.unfix()
-    m.afs.stripper.length.setlb(2)
     results = solver.solve(m)
-    print("Free column lengths: " + results.solver.termination_condition)
+    print("Free column length: " + results.solver.termination_condition)
 
     m.T_hot.unfix()
     m.T_hot.setub(156 + 273)
@@ -594,7 +605,7 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_ub_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_ub
@@ -604,7 +615,7 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.afs.stripper.flooding_lb_con = Constraint(
         m.afs.stripper.length_domain, rule=reg_flooding_lb
@@ -631,7 +642,7 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         >= 0.93
     )
     results = solver.solve(m)
-    print("Capture target: " + results.solver.termination_condition)
+    print("Update capture target: " + results.solver.termination_condition)
 
     m.absorber.diameter.unfix()
     m.absorber.del_component(m.absorber.flooding_lb_con)
@@ -641,7 +652,7 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] <= 0.85 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] <= 0.80 * m.flooding_velocity[i]
 
     m.absorber.flooding_ub_con = Constraint(
         m.absorber.length_domain, rule=abs_flooding_ub
@@ -651,7 +662,7 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         if i == 0 or i == num_segments:
             return Constraint.Skip
         else:
-            return m.vapor_velocity[i] >= 0.45 * m.flooding_velocity[i]
+            return m.vapor_velocity[i] >= 0.40 * m.flooding_velocity[i]
 
     m.absorber.flooding_lb_con = Constraint(
         m.absorber.length_domain, rule=abs_flooding_lb
@@ -681,6 +692,10 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
     results = solver.solve(m)
     print("Free bypasses: " + results.solver.termination_condition)
 
+    m.afs.stripper.length.unfix()
+    results = solver.solve(m)
+    print("Free column lengths: " + results.solver.termination_condition)
+
     if not split_train:
         m.absorber.vapor_properties[0, 0].flow_mol.fix(25000)
         results = solver.solve(m)
@@ -694,6 +709,22 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         results = solver.solve(m)
         print("Increase plant scale: " + results.solver.termination_condition)
 
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29300)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29600)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29900)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(29950)
+        results = solver.solve(m)
+        print("Increase plant scale: " + results.solver.termination_condition)
+
         m.absorber.vapor_properties[0, 0].flow_mol.fix(30000)
         results = solver.solve(m)
         print("Increase plant scale: " + results.solver.termination_condition)
@@ -703,13 +734,24 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
         results = solver.solve(m)
         print("Split train, step 1: " + results.solver.termination_condition)
 
-        m.absorber.vapor_properties[0, 0].flow_mol.fix(15000)
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(14500)
+        results = solver.solve(m)
+        print("Split train, step 1: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(14900)
+        results = solver.solve(m)
+        print("Split train, step 1: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(14950)
         results = solver.solve(m)
         print("Split train, step 2: " + results.solver.termination_condition)
 
-        m.absorber.diameter.setub(20)
-        m.M_w.setlb(0)
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(14980)
         results = solver.solve(m)
-        print("Split train, step 3: " + results.solver.termination_condition)
+        print("Split train, step 2: " + results.solver.termination_condition)
+
+        m.absorber.vapor_properties[0, 0].flow_mol.fix(15000)
+        results = solver.solve(m)
+        print("Split train, step 2: " + results.solver.termination_condition)
 
     return m, results
