@@ -270,16 +270,13 @@ class PZPackedColumnData(UnitModelBlockData):
             doc="Superficial velocity of liquid phase",
         )
 
-        self.outlet_pressure = Param(
-            initialize=103000,
-            mutable=True,
-            units=pyunits.Pa,
-            doc="The fixed outlet pressure when applying linear pressure drop",
+        self.P_drop_z = Param(
+            initialize=0.2, mutable=True, units=pyunits.kPa / pyunits.m
         )
 
         # Packing parameters
         self.a = Param(
-            initialize=252,
+            initialize=250,
             mutable=True,
             units=pyunits.m**2 / pyunits.m**3,
             doc="Specific area",
@@ -790,18 +787,14 @@ class PZPackedColumnData(UnitModelBlockData):
                 if x == self.length_domain.first():
                     return Constraint.Skip
                 else:
-                    return blk.vapor_properties[
-                        self.flowsheet().time.first(), x
-                    ].pressure / 1000 - blk.vapor_properties[
-                        self.flowsheet().time.first(), self.length_domain.prev(x)
-                    ].pressure / 1000 == -(
-                        blk.vapor_properties[
-                            self.flowsheet().time.first(), self.length_domain.first()
+                    return (
+                        blk.vapor_properties[self.flowsheet().time.first(), x].pressure
+                        / 1000
+                        - blk.vapor_properties[
+                            self.flowsheet().time.first(), self.length_domain.prev(x)
                         ].pressure
                         / 1000
-                        - self.outlet_pressure / 1000
-                    ) / blk.length * (
-                        blk.length / self.config.finite_elements
+                        == -self.P_drop_z * blk.length / self.config.finite_elements
                     )
 
         # heat transfer model
