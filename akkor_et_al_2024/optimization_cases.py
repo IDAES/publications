@@ -736,22 +736,22 @@ def optimize_ngcc_commercial_plant(m, solver, num_segments, split_train):
 
         m.absorber.vapor_properties[0, 0].flow_mol.fix(14500)
         results = solver.solve(m)
-        print("Split train, step 1: " + results.solver.termination_condition)
+        print("Split train, step 2: " + results.solver.termination_condition)
 
         m.absorber.vapor_properties[0, 0].flow_mol.fix(14900)
         results = solver.solve(m)
-        print("Split train, step 1: " + results.solver.termination_condition)
+        print("Split train, step 3: " + results.solver.termination_condition)
 
         m.absorber.vapor_properties[0, 0].flow_mol.fix(14950)
         results = solver.solve(m)
-        print("Split train, step 2: " + results.solver.termination_condition)
+        print("Split train, step 4: " + results.solver.termination_condition)
 
         m.absorber.vapor_properties[0, 0].flow_mol.fix(14980)
         results = solver.solve(m)
-        print("Split train, step 2: " + results.solver.termination_condition)
+        print("Split train, step 5: " + results.solver.termination_condition)
 
         m.absorber.vapor_properties[0, 0].flow_mol.fix(15000)
         results = solver.solve(m)
-        print("Split train, step 2: " + results.solver.termination_condition)
+        print("Split train, step 6: " + results.solver.termination_condition)
 
     return m, results
