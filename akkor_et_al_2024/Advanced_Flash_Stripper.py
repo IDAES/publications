@@ -240,10 +240,6 @@ class PZ_AFSData(UnitModelBlockData):
         blk.flash_tank.del_component(blk.flash_tank.obj)
 
         # packing parameters for the stripper (random packing)
-        blk.stripper.del_component(blk.stripper.a)
-        blk.stripper.a = Param(
-            initialize=250, mutable=True, doc="Specific area (m2/m3)"
-        )
         blk.stripper.del_component(blk.stripper.void)
         blk.stripper.void = Param(initialize=0.97, mutable=True, doc="Void fraction")
         blk.stripper.del_component(blk.stripper.P_drop_z)
@@ -327,5 +323,5 @@ class PZ_AFSData(UnitModelBlockData):
         with idaeslog.solver_log(init_log, idaeslog.DEBUG) as slc:
             results = solver.solve(blk, tee=slc.tee)
         init_log.info_high(
-            "Step 3 - Heat transfer: {}.".format(idaeslog.condition(results))
+            "Step 3 - Pressure drop and heat transfer: {}.".format(idaeslog.condition(results))
         )
