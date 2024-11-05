@@ -54,7 +54,7 @@ from Advanced_Flash_Stripper import PZ_AFS
 def flowheet_model(flue_gas, scale, optimization, split_train):
     # import solver
     solver = SolverFactory("gams")
-    solver.options = {"solver": "conopt"}
+    solver.options = {"solver": "conopt3"}
     # create model
     m = ConcreteModel()
     m.fs = FlowsheetBlock(dynamic=False)
@@ -147,21 +147,22 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
         results = solver.solve(m)
         print("Absorber scale up, step 4: " + results.solver.termination_condition)
 
-        if flue_gas == "coal":
-            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(1000)
-            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(5000)
-            results = solver.solve(m)
-            print("Absorber scale up, step 5: " + results.solver.termination_condition)
+        # if flue_gas == "coal":
+        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(500)
+        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(2500)
+        results = solver.solve(m)
+        print("Absorber scale up, step 5: " + results.solver.termination_condition)
 
-            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(3200)
-            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(16000)
-            results = solver.solve(m)
-            print("Absorber scale up, step 5: " + results.solver.termination_condition)
-
-        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(4200)
-        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(21000)
+        m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(3200)
+        m.fs.absorber.liquid_properties[0, N].flow_mol.fix(16000)
         results = solver.solve(m)
         print("Absorber scale up, step 6: " + results.solver.termination_condition)
+
+        if flue_gas == "ngcc":
+            m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(4200)
+            m.fs.absorber.liquid_properties[0, N].flow_mol.fix(21000)
+            results = solver.solve(m)
+            print("Absorber scale up, step 6: " + results.solver.termination_condition)
 
         m.fs.absorber.vapor_properties[0, 0].flow_mol.fix(6760)
         m.fs.absorber.liquid_properties[0, N].flow_mol.fix(33800)
@@ -357,10 +358,94 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
                 )
 
     # report results
-    for v in m.component_data_objects(Var):
-        print(v.name + ": " + str(v.value))
     print(results.solver.termination_condition)
     print(f"DoFs: {degrees_of_freedom(m)}")
+    print("Absorber total length (m): " + str(round(m.fs.absorber.length.value * 3, 2)))
+    print("Absorber diameter (m): " + str(round(m.fs.absorber.diameter.value, 2)))
+    print(
+        "AFS total length (m): "
+        + str(
+            round(
+                m.fs.afs.stripper.length.value * 2
+                + value(m.fs.L_flash_tank.expr) * 0.0254,
+                2,
+            )
+        )
+    )
+    print("AFS diameter (m): " + str(round(m.fs.afs.stripper.diameter.value, 2)))
+    print("Area of exchanger #1 (m2): " + str(round(m.fs.A1.value, 1)))
+    print("Area of exchanger #2 (m2): " + str(round(m.fs.A2.value, 1)))
+    print("Area of exchanger #3 (m2): " + str(round(m.fs.A3.value, 1)))
+    print("Area of intercooler (m2): " + str(round(m.fs.A_intercooler.value, 1)))
+    print(
+        "Intercooled temperature (C): "
+        + str(round(m.fs.absorber.T_intercooler.value - 273, 1))
+    )
+    print("Area of cooler (m2): " + str(round(m.fs.A_cooler.value, 1)))
+    print(
+        "Lean temperature (C): "
+        + str(round(m.fs.absorber.liquid_properties[0, 40].temperature.value - 273, 1))
+    )
+    print("Area of heater (m2): " + str(round(m.fs.A_heater.value, 1)))
+    print("Temperature of hot stream (C): " + str(round(m.fs.T_hot.value - 273, 1)))
+    print("Solvent flowrate (mol/s): " + str(round(m.fs.F_l_prime.value, 1)))
+    print("Cold bypass (%): " + str(round(m.fs.bypass1.value * 100, 1)))
+    print("Warm bypass (%): " + str(round(m.fs.bypass2.value * 100, 1)))
+    print(
+        "Rich loading: "
+        + str(
+            round(
+                m.fs.absorber.liquid_properties[0, 0].mole_frac_comp["CO2"].value
+                / 2
+                / m.fs.absorber.liquid_properties[0, 0].mole_frac_comp["PZ"].value,
+                2,
+            )
+        )
+    )
+    print(
+        "Lean loading: "
+        + str(
+            round(
+                m.fs.afs.flash_tank.liquid_properties[0].mole_frac_comp["CO2"].value
+                / 2
+                / m.fs.afs.flash_tank.liquid_properties[0].mole_frac_comp["PZ"].value,
+                2,
+            )
+        )
+    )
+    print("Temperature of warm stream (C): " + str(round(m.fs.T_warm.value - 273, 1)))
+
+    print(
+        "Capture (%): ",
+        round(
+            100
+            * (m.fs.afs.stripper.vapor_properties[0, N].flow_mol_comp["CO2"].value)
+            / (m.fs.absorber.vapor_properties[0, 0].flow_mol_comp["CO2"].value),
+            2,
+        ),
+    )
+
+    if split_train:
+        print(
+            "Total annualized cost (two trains) ($/yr): "
+            + str(2 * m.fs.total_cost.value)
+        )
+    else:
+        print("Total annualized cost ($/yr): " + str(m.fs.total_cost.value))
+    print(
+        "Cost of capture ($/ton): "
+        + str(
+            round(
+                m.fs.total_cost.value
+                / m.fs.afs.stripper.vapor_properties[0, N].flow_mol_comp["CO2"].value
+                / 8000
+                / 3600
+                / 44
+                * (10**6),
+                2,
+            )
+        )
+    )
 
     # assertions
     m.fs.absorber.check_model()
@@ -422,9 +507,9 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
     if value(m.fs.tmin_ex3_1.expr) < 0 or value(m.fs.tmin_ex3_2.expr) < 0:
         print("Warning: Tmin violated for exchanger 3")
     if m.fs.M_w.value < 0:
-        print("Make-up of water is negative: " + str(m.M_w.value))
+        print("Make-up of water is negative: " + str(m.fs.M_w.value))
     if m.fs.M_pz.value < 0:
-        print("Make-up of PZ is negative: " + str(m.M_pz.value))
+        print("Make-up of PZ is negative: " + str(m.fs.M_pz.value))
     if (
         m.fs.absorber.liquid_properties[0, N].mole_frac_comp["CO2"].value
         / 2
@@ -439,54 +524,6 @@ def flowheet_model(flue_gas, scale, optimization, split_train):
                 / m.fs.absorber.liquid_properties[0, N].mole_frac_comp["PZ"].value
             )
         )
-
-    print(
-        "Capture in absorber: ",
-        round(
-            (
-                (
-                    m.fs.absorber.vapor_properties[0, 0].flow_mol.value
-                    * m.fs.absorber.vapor_properties[0, 0].mole_frac_comp["CO2"].value
-                    - m.fs.absorber.vapor_properties[0, N].flow_mol.value
-                    * m.fs.absorber.vapor_properties[0, N].mole_frac_comp["CO2"].value
-                )
-                / (
-                    m.fs.absorber.vapor_properties[0, 0].flow_mol.value
-                    * m.fs.absorber.vapor_properties[0, 0].mole_frac_comp["CO2"].value
-                )
-            )
-            * 100,
-            2,
-        ),
-    )
-    print(
-        "Capture: ",
-        round(
-            100
-            * (m.fs.afs.stripper.vapor_properties[0, N].flow_mol_comp["CO2"].value)
-            / (m.fs.absorber.vapor_properties[0, 0].flow_mol_comp["CO2"].value),
-            2,
-        ),
-    )
-
-    if split_train:
-        print("Total cost (two trains): " + str(2 * m.fs.total_cost.value))
-    else:
-        print("Total cost: " + str(m.fs.total_cost.value))
-    print(
-        "cost of capture: "
-        + str(
-            round(
-                m.fs.total_cost.value
-                / m.fs.afs.stripper.vapor_properties[0, N].flow_mol_comp["CO2"].value
-                / 8000
-                / 3600
-                / 44
-                * (10**6),
-                2,
-            )
-        )
-    )
 
 
 if __name__ == "__main__":
