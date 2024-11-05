@@ -120,6 +120,15 @@ class PZ_AFSData(UnitModelBlockData):
             liquid_phase=self.config.liquid_phase,
         )
 
+        # packing parameters for the stripper (random packing)
+        self.stripper.del_component(self.stripper.void)
+        self.stripper.void = Param(initialize=0.97, mutable=True, doc="Void fraction")
+        self.stripper.del_component(self.stripper.P_drop_z)
+        self.stripper.P_drop_z = Param(
+            initialize=0.3,
+            mutable=True,
+        )
+
         self.flash_tank = FlashTank(
             vapor_phase=self.config.vapor_phase, liquid_phase=self.config.liquid_phase
         )
@@ -239,15 +248,6 @@ class PZ_AFSData(UnitModelBlockData):
 
         blk.flash_tank.del_component(blk.flash_tank.obj)
 
-        # packing parameters for the stripper (random packing)
-        blk.stripper.del_component(blk.stripper.void)
-        blk.stripper.void = Param(initialize=0.97, mutable=True, doc="Void fraction")
-        blk.stripper.del_component(blk.stripper.P_drop_z)
-        blk.stripper.P_drop_z = Param(
-            initialize=0.3,
-            mutable=True,
-        )
-
         # list of variables to be fixed for the first step of initialization
         base_vars = [
             "material_transfer_coefficient_tot",
@@ -323,5 +323,7 @@ class PZ_AFSData(UnitModelBlockData):
         with idaeslog.solver_log(init_log, idaeslog.DEBUG) as slc:
             results = solver.solve(blk, tee=slc.tee)
         init_log.info_high(
-            "Step 3 - Pressure drop and heat transfer: {}.".format(idaeslog.condition(results))
+            "Step 3 - Pressure drop and heat transfer: {}.".format(
+                idaeslog.condition(results)
+            )
         )
