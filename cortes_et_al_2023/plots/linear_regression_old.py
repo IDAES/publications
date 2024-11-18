@@ -8,7 +8,6 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
-import os.path
 
 def read_raw_data(file_name):
     '''
@@ -21,8 +20,7 @@ def read_raw_data(file_name):
         formatted_data: pd.DataFrame, dataframe containing the raw data 
     '''
 
-    # formatted_data = pd.read_csv('formatted_raw_data.csv')
-    formatted_data = pd.read_csv(file_name)
+    formatted_data = pd.read_csv('formatted_raw_data.csv')
     formatted_data.set_index('Unnamed: 0', inplace = True)
 
     return formatted_data 
@@ -91,17 +89,15 @@ def separate_profits_features(df):
         all_profits: pd.DataFrame, dataframe of profits from the raw data file
     '''
 
-     # create a single feature matrix
-    print(df.columns)
+     # create a single feature matrix 
     features = df.drop(labels = ['NGCC profit (M$)','SOFC profit (M$)', 'NGCC+SOEC profit (M$)', 'rSOC profit (M$)', 'SOFC+SOEC profit (M$)', 'SOEC profit (M$)', 'Dip Test p-value'], axis = 1)
 
     # create a dataframe of all the profit columns 
     all_profits = df.drop(df.columns.difference(['NGCC profit (M$)','SOFC profit (M$)', \
-                                                                            'NGCC+SOEC profit (M$)', 'rSOC profit (M$)', \
+                                                                         'NGCC+SOEC profit (M$)', 'rSOC profit (M$)', \
                                                                             'SOFC+SOEC profit (M$)', 'SOEC profit (M$)']), \
                                                                                 axis = 1)
 
-    print(features.columns)
     return features, all_profits
                             
 
@@ -158,14 +154,10 @@ def perform_linear_regression(features, y, verbose = True):
     '''
 
     # add constant
-    print(features.columns)
     features_ = sm.add_constant(features)
 
     # convert y to numpy array with data type float
     y_ = y.to_numpy(dtype = float)
-
-    print('Shape of feature matrix: ')
-    print(y_.shape)
 
     # OLS linear regression 
     ols = sm.OLS(y_, features_)
@@ -251,7 +243,7 @@ def return_coefficient_table(results, save = False):
         ols_coef_table.at['Rsq', c] = str(round(ols_coef_table.at['Rsq',c],2))     
 
     if save:
-        ols_coef_table.to_csv('ols_coefficient_table_DJL.csv')
+        ols_coef_table.to_csv('ols_coefficient_table.csv')
 
     return ols_coef_table
 
@@ -295,11 +287,11 @@ def plot_featurecorrelation(fdest_data = 'formatted_raw_data.csv', save = False)
 
     # plot feature correlation
     plt.imshow(corr_df, cmap = 'GnBu', vmin = -1, vmax = 1)
-    plt.xticks(range(0,len(feature_labels)), labels = feature_labels, rotation=45, ha = 'right', fontsize=20)
-    plt.yticks(range(0,len(feature_labels)), labels = feature_labels, fontsize=20)
+    plt.xticks(range(0,len(feature_labels)), labels = feature_labels, rotation = 45, ha = 'right',fontsize = 14, fontweight = 'bold')
+    plt.yticks(range(0,len(feature_labels)), labels = feature_labels, fontsize = 14, fontweight = 'bold')
 
     # plot title
-    plt.title('Feature Correlation Matrix', fontsize=24)
+    plt.title('Feature Correlation Matrix', fontsize = 25, fontweight = 'bold')
 
     # Tick labels
     for i in range(0,len(feature_labels)):
@@ -307,22 +299,22 @@ def plot_featurecorrelation(fdest_data = 'formatted_raw_data.csv', save = False)
             if not np.isnan(corr_df.at[i,j]):
                 
                 text = ax.text(j, i, round(corr_df.at[i, j],2),
-                            ha="center", va="center", color="k", fontsize=10)
+                            ha="center", va="center", color="k", fontsize = 10, fontweight = 'bold')
 
 
     if save:
         # save plot image 
-        plt.savefig('feature_correlation_plot_DJL.png', dpi = 300, bbox_inches = 'tight')
-        plt.savefig('feature_correlation_plot_DJL.pdf', dpi = 300, bbox_inches = 'tight')
+        plt.savefig('feature_correlation_plot.png', dpi = 300, bbox_inches = 'tight')
+        plt.savefig('feature_correlation_plot.pdf', dpi = 300, bbox_inches = 'tight')
 
         # save correlation data as csv 
-        corr_df.to_csv('feature_correlation_DJL.csv')
+        corr_df.to_csv('feature_correlation.csv')
 
     plt.show()
 
     return corr_df
 
-def plot_parityplots(results, fdest_data= 'formatted_raw_data.csv', save = False):
+def plot_parityplots(results, fdest_data = 'formatted_raw_data.csv', save = False):
     '''
     Plots the parity between the optimization results and the linear regression model
 
@@ -348,25 +340,25 @@ def plot_parityplots(results, fdest_data= 'formatted_raw_data.csv', save = False
     cases = standardize_profits(profits)
 
     # formatted label and color dictionaries
-    colors_ = iter([plt.cm.Set2(i) for i in range(7)])
-    colors = {'NGCC': next(colors_), 'SOFC' : next(colors_), 'NGCC+SOEC' : next(colors_), 'rSOC' : next(colors_), 'SOFC+SOEC' : next(colors_), 'SOEC' : next(colors_)}
+    colors = {'NGCC': 'r', 'SOFC' : 'b', 'NGCC+SOEC' : 'g', 'rSOC' : 'm', 'SOFC+SOEC' : 'darkorange', 'SOEC' : 'deeppink'}
     labels = {'NGCC': 'NGCC', 'SOFC' : 'SOFC', 'NGCC+SOEC' : 'NGCC + SOEC', 'rSOC' : 'rSOC', 'SOFC+SOEC' : 'SOFC + SOEC', 'SOEC' : 'SOEC'}
 
     # make a 6 panel figure and six ax objects 
-    fig, axs = plt.subplots(nrows = 3, ncols = 2, sharex=True, sharey=True, figsize = (6,9))
+    fig, axs = plt.subplots(nrows = 2, ncols = 3, sharex = True, sharey = True, figsize = (11,9))
 
     # create dict of axes indexes associated with each system concept
-    axes_list = {'NGCC': axs[0,0], 'NGCC+SOEC': axs[0,1], 'SOFC': axs[1,0], 'rSOC': axs[1,1], 'SOEC': axs[2,0], 'SOFC+SOEC': axs[2,1]}
+    axes_list = {'NGCC': axs[0,0], 'NGCC+SOEC': axs[1,0], 'SOFC': axs[0,1], 'rSOC': axs[1,1], 'SOEC': axs[0,2], 'SOFC+SOEC': axs[1,2]}
 
     # adjust subplot spacing
     plt.subplots_adjust(top = 0.95, bottom = 0.06, left = 0.09)
 
     # add axes labels 
-    fig.supxlabel('Annual Profit from Rigorous Optimization', y = 0.01, fontsize=14)
-    fig.supylabel('Annual Profit Predicted by Linear Regression', x = 0.01, fontsize=14)
+    fig.supxlabel('Annual Profit from Rigorous Optimization', y = -0.001, fontsize = 20, fontweight = 'bold')
+    fig.supylabel('Annual Profit Predicted by Linear Regression', x = -0.001, fontsize = 20, fontweight = 'bold')
 
     # loop through the results objects 
     for key in results.keys():
+
         # return predicted profit values 
         features_ = sm.add_constant(features)
         y_pred = results[key].predict(features_)
@@ -382,33 +374,21 @@ def plot_parityplots(results, fdest_data= 'formatted_raw_data.csv', save = False
 
         # plot scatter of data 
         axes_list[key].scatter(y, y_pred, color = colors[key], zorder = 1)
-        count = 0
-        for i in features.index:
-            #if ("MiNg_$100" in i) or (i in ["BaseCaseTax_2030_10", "BaseCaseTax_2030_15", "BaseCaseTax_2030_20", "BaseCaseTax_2030_25", "BaseCaseTax_2030_30", 
-            #                                "HighWindTax_2030_10", "HighWindTax_2030_15", "HighWindTax_2030_20", "HighWindTax_2030_25", "HighWindTax_2030_30", 
-            #                                "HighSolarTax_2030_10", "HighSolarTax_2030_15", "HighSolarTax_2030_20", "HighSolarTax_2030_25", "HighSolarTax_2030_30", ]):
-            # if (features.loc[i, 'Carbon Tax ($/tonne)']) > 0:
-            if ("NETL" in i) and ("250" in i):
-                axes_list[key].scatter(cases[key].loc[i], y_pred[count], color='black', marker='*')
-
-            count += 1
 
         # add R-squared value to plot
         r_squared = results[key].rsquared
-        axes_list[key].text(0.05, 0.82, f'R$^{2}$ = {r_squared:.2f}', transform=axes_list[key].transAxes, fontsize=12, bbox = dict(facecolor = 'white', edgecolor = 'k'))
+        axes_list[key].text(0.05, 0.82, f'R$^{2}$ = {r_squared:.2f}', transform=axes_list[key].transAxes, fontsize=12, fontweight = 'bold', bbox = dict(facecolor = 'white', edgecolor = 'k'))
 
         # generate title based on the case number 
-        axes_list[key].set_title((labels[key]), fontsize = 12)
+        axes_list[key].set_title((labels[key]), fontsize = 12, fontweight = 'bold')
 
         # x and y tick labels
         for l in (axes_list[key].get_xticklabels() + axes_list[key].get_yticklabels()):
-            # l.set_weight('bold')
-            l.set_fontsize(14)
+            l.set_weight('bold')
+            l.set_fontsize(16)
 
         # grid
         axes_list[key].grid(True)
-
-    plt.tight_layout()
 
     if save:
         plt.savefig('ols_parity.png', dpi = 300, bbox_inches = 'tight')
@@ -418,13 +398,8 @@ def plot_parityplots(results, fdest_data= 'formatted_raw_data.csv', save = False
 
     return 
 
-if __name__ == "__main__":
-    file_name = os.path.join("C:\\", "Users", "Dan", "Documents", "Python Scripts", "Joule Paper Figures", "Nicole_Paper_Figures", 
-                             "src", "formatted_raw_data_DJL.csv")
-    # file_name = os.path.join("C:\\", "Users", "Dan", "Documents", "Python Scripts", "Joule Paper Figures", "Nicole_Paper_Figures", 
-    #                         "src", "formatted_raw_data_DJL_2.csv")
-    # file_name = os.path.join(".", 'formatted_raw_data.csv')
-    results = perform_regression_full(fdest_data=file_name)
-    plot_parityplots(results=results, fdest_data=file_name, save=True)
 
-    return_coefficient_table(results, save=True)
+
+
+
+

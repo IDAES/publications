@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
 from linear_regression import read_raw_data
 
+import os.path
+
 class IESSolution:
     def __init__(self, m = None, csv_file = None, case_object = None):
         '''
@@ -768,7 +770,7 @@ class IESSolution:
 
         # axes ticks and tick labels
         for label in (ax.get_xticklabels() + ax.get_yticklabels()):
-            label.set_fontsize(15)
+            label.set_fontsize(20)
         plt.tick_params(direction='in', top = True, right = True)
         plt.minorticks_on()
         plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
@@ -815,7 +817,7 @@ class IESSolution:
 
         # axes ticks and tick labels
         for label in (ax.get_xticklabels() + ax.get_yticklabels()):
-            label.set_fontsize(15)
+            label.set_fontsize(20)
         plt.tick_params(direction='in', top = True, right = True)
         plt.minorticks_on()
         plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
@@ -922,14 +924,14 @@ class IESSolution:
             #ax.set_ylim(ymin = 0.0, ymax = self.h_nameplate+.1)
         # set title and axis labels
         if title_pow is None:
-            plt.title('Operation', fontsize=20, fontweight = 'bold')
+            plt.title('Operation', fontsize=50)
         else:
-            plt.title(title_pow, fontsize = 20, fontweight = 'bold')
-        plt.xlabel('Hour', fontsize=30, fontweight = 'bold')
+            plt.title(title_pow, fontsize=24)
+        plt.xlabel('Hour', fontsize=50)
         if self.POWER:
-            plt.ylabel('Power Output (MW)', color = 'r', fontsize=30, fontweight = 'bold')
+            plt.ylabel('Power Output (MW)', color='r', fontsize=50)
         else: # hydrogen
-            plt.ylabel('H$_{2}$ Output (kg/s)', color = 'm', fontsize=30, fontweight = 'bold')
+            plt.ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', color='m', fontsize=50)
         plt.grid(True)
 
 
@@ -939,14 +941,13 @@ class IESSolution:
         plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
         # make a plot with different y-axis using second axis object
         ax2=ax.twinx()
-        ax2.scatter(self.horizon[start_end[0]:start_end[1]], self.lmp[start_end[0]:start_end[1]], facecolors='none',edgecolors='b', linewidths = 3)
+        ax2.scatter(self.horizon[start_end[0]:start_end[1]], self.lmp[start_end[0]:start_end[1]], facecolors='none', edgecolors='b', linewidths=3)
         # second y axis label
-        ax2.set_ylabel("LMP ($/MWh)",color="blue",fontsize=30, fontweight = 'bold')
+        ax2.set_ylabel(r'LMP \$$\cdot$MWh$^{-1}$',color="blue",fontsize=50)
 
         # major and minor ticks
         for label in (ax.get_xticklabels() + ax.get_yticklabels()+ax2.get_yticklabels()):
-            label.set_fontsize(25)
-            label.set_fontweight('bold')
+            label.set_fontsize(36)
         plt.tick_params(direction='in', top = True, right = True)
         plt.minorticks_on()
         plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
@@ -970,11 +971,11 @@ class IESSolution:
 
             # set title and axis labels
             if title_h2 is None:
-                plt.title('H$_{2}$ Operation', fontsize=20, fontweight = 'bold')
+                plt.title('H$_{2}$ Operation', fontsize=50)
             else:
-                plt.title(title_h2, fontsize = 20, fontweight = 'bold')
-            plt.xlabel('Hour', fontsize=30, fontweight = 'bold')
-            plt.ylabel('H$_{2}$ Output (kg/s)', color = 'm', fontsize=30, fontweight = 'bold')
+                plt.title(title_h2, fontsize=36)
+            plt.xlabel('Hour', fontsize=50)
+            plt.ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', color = 'm', fontsize=50)
             plt.grid(True)
 
             # major and minor ticks
@@ -985,12 +986,11 @@ class IESSolution:
             # make a plot with different y-axis using second axis object
             ax2=ax.twinx()
             ax2.scatter(self.horizon[start_end[0]:start_end[1]], self.h2_price[start_end[0]:start_end[1]], facecolors='none',edgecolors='g', linewidths = 3)
-            ax2.set_ylabel(r'Price ($/kg)',color="g",fontsize=30, fontweight = 'bold')
+            ax2.set_ylabel(r'Price \$$\cdot$kg$^{-1}$',color="g",fontsize=50)
 
             # major and minor ticks
             for label in (ax.get_xticklabels() + ax.get_yticklabels()+ax2.get_yticklabels()):
-                label.set_fontsize(25)
-                label.set_fontweight('bold')
+                label.set_fontsize(20)
             plt.tick_params(direction='in', top = True, right = True)
             plt.minorticks_on()
             plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
@@ -1016,12 +1016,12 @@ class IESSolution:
         fig, ax = plt.subplots(figsize = (6,6))
         if self.POWER:
             plt.scatter(self.lmp, self.p_dispatch, facecolors='none',edgecolors='r', linewidths = 3, label = 'Net Power')
-            plt.ylabel('Net Power (MW)', fontsize = 20, fontweight = 'bold', color = 'r')
+            plt.ylabel('Net Power (MW)', fontsize=24, color = 'r')
 
 
             # titles and axes
-            plt.title('Plant Dispatch vs LMP', fontsize = 20, fontweight = 'bold')
-            plt.xlabel('LMP ($/MWh)', fontsize = 20, fontweight = 'bold')
+            plt.title('Plant Dispatch vs LMP', fontsize=24)
+            plt.xlabel('LMP \$$\cdot$MWh$^{-1}$', fontsize=24)
             plt.grid(True)
 
             # major and minor ticks
@@ -1029,14 +1029,14 @@ class IESSolution:
             plt.minorticks_on()
             plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
             for label in (ax.get_xticklabels() + ax.get_yticklabels()):
-                label.set_fontsize(15)
+                label.set_fontsize(20)
 
             # if hydrogen, make twin axes for hydrogen production
             if self.HYDROGEN:
                 # make a plot with different y-axis using second axis object
                 ax2=ax.twinx()
                 ax2.scatter(self.lmp, self.h_dispatch, facecolors = 'none', edgecolors = 'magenta', linewidths = 3, label = r'H$_{2}$ Output')
-                ax2.set_ylabel(r'H$_{2}$ Output (kg/s)', fontsize = 20, fontweight = 'bold', color = 'magenta')
+                ax2.set_ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', fontsize = 20, fontweight = 'bold', color = 'magenta')
                 # major and minor ticks
                 for label in (ax.get_xticklabels() + ax.get_yticklabels()+ax2.get_yticklabels()):
                     label.set_fontsize(15)
@@ -1052,12 +1052,12 @@ class IESSolution:
 
         else:
             ax.scatter(self.lmp, self.h_dispatch, facecolors = 'none', edgecolors = 'magenta', linewidths = 3, label = r'H$_{2}$ Output')
-            ax.set_ylabel(r'H$_{2}$ Output (kg/s)', fontsize = 20, fontweight = 'bold', color = 'magenta')
+            ax.set_ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', fontsize=24, color = 'magenta')
             #ax.set_ylim(ymin = 0.0)
 
             # titles and axes
-            plt.title('Plant Dispatch vs LMP', fontsize = 20, fontweight = 'bold')
-            plt.xlabel('LMP ($/MWh)', fontsize = 20, fontweight = 'bold')
+            plt.title('Plant Dispatch vs LMP', fontsize=24)
+            plt.xlabel('LMP \$$\cdot$MWh$^{-1}$', fontsize=24)
             plt.grid(True)
 
             # major and minor ticks
@@ -1065,7 +1065,7 @@ class IESSolution:
             plt.minorticks_on()
             plt.tick_params(which = 'minor', direction = 'in', top = True, right = True)
             for label in (ax.get_xticklabels() + ax.get_yticklabels()):
-                label.set_fontsize(15)
+                label.set_fontsize(12)
 
             # save figure
             if fdest is not None:
@@ -1090,11 +1090,11 @@ class IESSolution:
         plt.hist(self.lmp, bins = 20, color = 'b')
         
         # title 
-        plt.title(signal_name, fontsize = 20, fontweight = 'bold')
+        # plt.title(signal_name, fontsize=24)
         
         # labels 
-        plt.xlabel('Locational Marginal Price ($/MWh)', fontsize = 15, fontweight = 'bold')
-        plt.ylabel('Frequency', fontsize = 15, fontweight = 'bold')
+        plt.xlabel(r'LMP (\$$\cdot$MWh$^{-1}$)', fontsize=30)
+        plt.ylabel('Frequency', fontsize=30)
         
         # make y axis a percentage 
         ax.yaxis.set_major_formatter(PercentFormatter(xmax = len(self.lmp)))
@@ -1114,15 +1114,18 @@ class IESSolution:
         
         # label size
         for label in (ax.get_xticklabels() + ax.get_yticklabels()):
-            label.set_fontsize(12)
-            label.set_fontweight('bold')
+            label.set_fontsize(24)
         
+        plt.setp(ax.get_xticklabels(), rotation=90)
+
         #grid
         ax.set_axisbelow(True)
         plt.grid()
         
         # add textbox with info
-        formatted_data = read_raw_data('formatted_raw_data.csv')
+        file_name = os.path.join("C:\\", "Users", "Dan", "Documents", "Python Scripts", "Joule Paper Figures", "Nicole_Paper_Figures", 
+                                 "src", "formatted_raw_data_DJL.csv")
+        formatted_data = read_raw_data(file_name)
 
         # convert hydrogen price to string 
         # Convert the float to an integer by multiplying it by 10 to the power of the number of decimal places, then rounding it to the nearest integer.
@@ -1140,10 +1143,11 @@ class IESSolution:
             if i >=200:
                 count += 1
         
-        textstring = 'Median LMP = ${0}/MWh \nNatural Gas Price = ${1}/MMBtu'.format(round(med,2), ng)
+        textstring = r'Median LMP = \${0} '.format(round(med, 2)) +  r'$\cdot$MWh$^{-1}$' + '\nNatural Gas Price = \${0}'.format(ng) + r'$\cdot$MMBtu$^{-1}$'
 
-        plt.text(x = 50, y = 0.24*len(self.lmp), s = textstring, fontsize = 12, fontweight = 'bold', backgroundcolor = 'white', \
-                bbox = dict(edgecolor ='black', facecolor = 'white'))
+        plt.text(x = 14, y = 0.24*len(self.lmp), s = textstring, fontsize=14, backgroundcolor = 'white', bbox = dict(edgecolor ='black', facecolor = 'white'))
+
+        plt.tight_layout()
         
         # save figure
         if fdest is not None:

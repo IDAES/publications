@@ -313,11 +313,11 @@ class IESModel:
 
 
             # titles and labels
-            plt.title('Marginal Cost of Power ($/MWh)', fontsize = 20, fontweight = 'bold')
-            ax.set_xticks(tix, xlabels, fontsize = 15, rotation = 45, ha = 'right')
-            ax.set_yticks(tix, ylabels, fontsize = 15)
-            plt.xlabel('Net Power (MW)', fontsize = 20, fontweight = 'bold')
-            plt.ylabel('H$_{2}$ Output (kg/s)', fontsize = 20, fontweight = 'bold')
+            plt.title(r'Marginal Cost of Power \$$\cdot$MWh$^{-1}$', fontsize=24)
+            ax.set_xticks(tix, xlabels, fontsize=22, rotation = 45, ha = 'right')
+            ax.set_yticks(tix, ylabels, fontsize=22)
+            plt.xlabel('Net Power MW', fontsize=24)
+            plt.ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', fontsize=24)
 
             ht_1 = lambda ht: ht >= 1.0
             ht_5 = lambda ht: ht <= 5.0
@@ -370,11 +370,11 @@ class IESModel:
             plt.clabel(contours, inline = True, fontsize = 15)
 
             # titles and labels
-            plt.title('Marginal Cost of H$_{2}$ (\$/MWh)', fontsize = 20, fontweight = 'bold')
-            ax.set_xticks(tix, xlabels, fontsize = 15, rotation = 45)
-            ax.set_yticks(tix, ylabels, fontsize = 15)
-            plt.xlabel('Net Power (MW)', fontsize = 20, fontweight = 'bold')
-            plt.ylabel('H$_{2}$ Output (kg/s)', fontsize = 20, fontweight = 'bold')
+            plt.title(r'Marginal Cost of H$_{2}$ \$$\cdot$kg$^{-1}$', fontsize=24)
+            ax.set_xticks(tix, xlabels, fontsize=22, rotation = 45, ha = 'right')
+            ax.set_yticks(tix, ylabels, fontsize=22)
+            plt.xlabel('Net Power MW', fontsize=24)
+            plt.ylabel(r'H$_{2}$ Output kg$\cdot$s$^{-1}$', fontsize=24)
 
             # plot feasible region
             if self.number == 3:
@@ -451,9 +451,9 @@ class IESModel:
             # plot
             fig, ax = plt.subplots(figsize = (6,6))
             plt.plot(pt_vals, marg_cost_p(pt_vals)*1E6, color = 'black', linewidth = 3)
-            plt.title('Marginal Cost of Power', fontsize = 20, fontweight = 'bold')
-            plt.xlabel('Net Power (MW)', fontsize = 20, fontweight = 'bold')
-            plt.ylabel('Marginal Cost ($/MWh)', fontsize = 20, fontweight = 'bold')
+            plt.title(r'Marginal Cost of Power', fontsize=24)
+            plt.xlabel('Net Power (MW)', fontsize=24)
+            plt.ylabel(r'Marginal Cost \$$\cdot$MWh$^{-1}$', fontsize=24)
             plt.grid(True)
 
             # major and minor ticks
@@ -473,14 +473,14 @@ class IESModel:
             plt.show()
 
             fig, ax = plt.subplots(figsize = (6,6))
-            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_30(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'solid', linewidth = 3, label = 'LMP = \$30/MWh')
-            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_60(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'dashed', linewidth = 3, label = 'LMP = \$60/MWh')
-            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_100(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'dotted', linewidth = 3, label = 'LMP = \$100/MWh')
-            plt.title('Marginal Cost of H$_{2}$', fontsize = 20, fontweight = 'bold')
-            plt.xlabel('H$_{2}$ Output (kg/s)', fontsize = 20, fontweight = 'bold')
-            plt.ylabel('Marginal Cost ($/kg)', fontsize = 20, fontweight = 'bold')
+            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_30(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'solid', linewidth = 3, label = r'LMP = \$30$\cdot$MWh$^{-1}$')
+            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_60(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'dashed', linewidth = 3, label = 'LMP = \$60$\cdot$MWh$^{-1}$')
+            plt.plot(ht_vals, np.ones_like(ht_vals)*(marg_cost_h_100(0.0, ht_vals)*(1E6/3600)), color = 'black', linestyle = 'dotted', linewidth = 3, label = 'LMP = \$100$\cdot$MWh$^{-1}$')
+            plt.title(r'Marginal Cost of H$_{2}$', fontsize=24)
+            plt.xlabel('H$_{2}$ Output kg$\cdot$s$^{-1}$', fontsize=24)
+            plt.ylabel('Marginal Cost \$$\cdot$kg$^{-1}$', fontsize=24)
             plt.grid(True)
-            fig.legend(loc = 'upper right', bbox_to_anchor = (0.9, 0.7), fontsize = 15)
+            fig.legend(loc = 'upper right', bbox_to_anchor = (0.9, 0.7), fontsize=24)
 
             # major and minor ticks
             plt.tick_params(direction = 'in', top = True, right = True)
@@ -513,9 +513,9 @@ class IESModel:
             # generate plot
             fig, ax = plt.subplots(figsize = (6,6))
             plt.plot(pt_vals, marg_cost(pt_vals)*1E6, color = 'black', linewidth = 3)
-            plt.title('Marginal Cost of Power', fontsize = 20, fontweight = 'bold')
-            plt.xlabel('Net Power (MW)', fontsize = 20, fontweight = 'bold')
-            plt.ylabel('Marginal Cost ($/MWh)', fontsize = 20, fontweight = 'bold')
+            plt.title(r'Marginal Cost of Power', fontsize=24)
+            plt.xlabel('Net Power (MW)', fontsize=24)
+            plt.ylabel(r'Marginal Cost \$$\cdot$MWh$^{-1}$', fontsize=24)
             plt.grid(True)
 
             # major and minor ticks

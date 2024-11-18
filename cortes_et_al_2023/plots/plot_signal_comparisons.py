@@ -650,8 +650,8 @@ def plot_positiveprofit_barplot(fdest_data = 'formatted_raw_data.csv', h2_price 
                 for key in winners.keys():
                     if profits[key] >= 0:
                         winners[key] += 1
-
-    colors = {'NGCC': 'r', 'SOFC' : 'b', 'NGCC+SOEC' : 'g', 'rSOC' : 'm', 'SOFC+SOEC' : 'darkorange', 'SOEC' : 'deeppink'}
+    colors_ = iter([plt.cm.Set2(i) for i in range(7)])
+    colors = {'NGCC': next(colors_), 'SOFC' : next(colors_), 'NGCC+SOEC' : next(colors_), 'rSOC' : next(colors_), 'SOFC+SOEC' : next(colors_), 'SOEC' : next(colors_)}
     labels = {'NGCC': 'NGCC', 'SOFC' : 'SOFC', 'NGCC+SOEC' : 'NGCC + SOEC', 'rSOC' : 'rSOC', 'SOFC+SOEC' : 'SOFC + SOEC', 'SOEC' : 'SOEC'}
 
     fig, ax = plt.subplots(figsize = (12,6))
@@ -661,14 +661,14 @@ def plot_positiveprofit_barplot(fdest_data = 'formatted_raw_data.csv', h2_price 
         plt.barh(labels[c], winners[c], color = colors[c], edgecolor = 'k', label = labels[c], zorder = 2)
 
     if h2_price == 0:
-        plt.xlabel('Scenarios with Positive Profits', fontsize = 25, fontweight = 'bold')
+        plt.xlabel('Scenarios with Positive Profits', fontsize=24)
     else:
-        plt.xlabel(r'Scenarios with Positive Profits - \${0}.{1}/kg H$_2$'.format(str(h2_price)[0], str(h2_price)[1]), \
-                   fontsize = 25, fontweight = 'bold')
+        plt.xlabel(r'Scenarios with Positive Profits: \${0}.{1}0 '.format(str(h2_price)[0], str(h2_price)[1]) + r'$\cdot$kg$^{-1}$ H$_2$', \
+                   fontsize=24)
 
     # set the xlabels as the names not the numbers
-    plt.yticks(ha = 'right', fontsize = 15, fontweight = 'bold')
-    plt.xticks(fontsize = 15, fontweight = 'bold')
+    plt.yticks(ha='right', fontsize=24)
+    plt.xticks(fontsize=24)
 
     # format the x axis as percentages
     ax.xaxis.set_major_formatter(mtick.PercentFormatter(61))
