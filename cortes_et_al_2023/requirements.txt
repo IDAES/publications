@@ -1,0 +1,8 @@
+pandas
+matplotlib
+statsmodels
+openpyxl
+sympy
+idaes-pse
+diptest
+notebook
