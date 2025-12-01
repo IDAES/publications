@@ -5,7 +5,19 @@ Disclaimer: This code was developed at Carnegie Mellon University by Ilayda Akko
 If you find this code useful for your research, please consider citing
 "Mathematical Modeling and Economic Optimization of a Piperazine-Based
 Post-Combustion Carbon Capture Process" by Ilayda Akkor, Shachit S. Iyer,
-John Dowdle, Le Wang and Chrysanthos E. Gounaris
+John Dowdle, Le Wang and Chrysanthos E. Gounaris.
+
+```
+@article{akkor2025mathematical,
+  title={Mathematical modeling and economic optimization of a piperazine-based post-combustion carbon capture process},
+  author={Akkor, Ilayda and Iyer, Shachit S and Dowdle, John and Wang, Le and Gounaris, Chrysanthos E},
+  journal={International Journal of Greenhouse Gas Control},
+  volume={140},
+  pages={104282},
+  year={2025},
+  publisher={Elsevier}
+}
+```
 
 This is a model of the of the Piperazine/Advanced Flash Stripper (PZ/AFS) flowsheet [1],
 which is a post-combustion carbon capture (PCC) process. The process consists of the following,
