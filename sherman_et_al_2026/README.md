@@ -59,7 +59,11 @@ you will need working distributions of:
    ).
 
 Note that the published results were produced with Python 3.12.11,
-GAMS 49.6.1, and IPOPT 3.13.2/MA57.
+GAMS 49.6.1, IPOPT 3.13.2/MA57, and are tied to
+[commit af90394](
+    https://github.com/IDAES/publications/commit/af90394e5aef72a323438ae62a1c79842877584c
+)
+of the present repository.
 
 
 ### Instructions
