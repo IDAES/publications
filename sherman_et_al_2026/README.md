@@ -123,7 +123,8 @@ In a UNIX terminal, you may set up the present package as follows:
 In the examples that follow,
 set your working directory to `$MEA_DIR`,
 and replace `$RESULTS_DIR`
-with a path to a directory of your choice.
+with a path to a directory of your choice for storing
+the results of computational studies.
 If `$RESULTS_DIR` does not exist,
 then it is automatically created,
 provided that its parent directories exist.
@@ -213,7 +214,8 @@ in your terminal.
 
 ### Running a Full Computational Study
 
-In advance of running a full computational study, you will need to:
+In advance of running a full computational study, you will need to
+ensure that `$RESULTS_DIR` is empty (or does not exist) and:
 
 1. Ensure that you have a working distribution of
    [GNU Screen (`screen`)](https://www.gnu.org/software/screen/) installed
