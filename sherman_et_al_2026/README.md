@@ -60,8 +60,8 @@ you will need working distributions of:
 
 Note that the published results were produced with Python 3.12.11,
 GAMS 49.6.1, IPOPT 3.13.2/MA57, and are tied to
-[commit af90394](
-    https://github.com/IDAES/publications/commit/af90394e5aef72a323438ae62a1c79842877584c
+[commit 9aac556](
+	https://github.com/IDAES/publications/tree/9aac556aca25ed2dc58245452f402cc51f774e60
 )
 of the present repository.
 
