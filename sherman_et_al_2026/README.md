@@ -27,7 +27,7 @@ you will need working distributions of:
 1. [Python](https://docs.python.org/3/using/index.html) 3.9, 3.10, 3.11, or 3.12.
 
 2. [GAMS](https://www.gams.com/49/docs/UG_MAIN.html#UG_INSTALL)
-   (47.6 or later recommended).
+   (49 or later recommended).
 
 3. [IPOPT](https://coin-or.github.io/Ipopt/INSTALL.html),
    with access to
@@ -59,7 +59,7 @@ you will need working distributions of:
    ).
 
 Note that the published results were produced with Python 3.12.11,
-GAMS 47.6.0, and IPOPT 3.13.2/MA57.
+GAMS 49.6.1, and IPOPT 3.13.2/MA57.
 
 
 ### Instructions
