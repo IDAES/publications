@@ -182,7 +182,7 @@ file names are descriptive.
 In particular, key outputs of the model at the solution obtained
 are stored in the file entitled
 `$RESULTS_DIR/pyros/95pt0capture_99pt0_conf/solve_results.csv`,
-the index labels of which are documented in the file
+the column labels of which are documented in the file
 `mea_solve_results_column.csv`.
 
 
