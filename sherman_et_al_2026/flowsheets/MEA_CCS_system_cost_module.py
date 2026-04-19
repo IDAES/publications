@@ -153,7 +153,7 @@ def get_CO2_absorption_cost(self):
     rich_solvent_pump_account = ["8.3"]
     self.b30 = pyo.Block()
     
-    # Consider 10 % margin when computing the rich solvent rated Fflowrate
+    # Consider 10 % margin when computing the rich solvent rated flowrate
     # based on the flowsheet rich solvent volumetric flowrate (defined in the 
     # absorber section subflowsheet)
 
