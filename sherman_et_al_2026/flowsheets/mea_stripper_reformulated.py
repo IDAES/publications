@@ -315,7 +315,6 @@ class MEAStripperFlowsheetData(FlowsheetBlockData):
         ## Stripper condenser area calculation
         COND = self.condenser
 
-        # Assume heat transfer coefficient (arbitrary value for now)
         COND.overall_heat_transfer_coefficient = pyo.Param(
             initialize=375, mutable=False, units=pyo.units.W/pyo.units.m**2/pyo.units.K)  # W/m2.K
         
