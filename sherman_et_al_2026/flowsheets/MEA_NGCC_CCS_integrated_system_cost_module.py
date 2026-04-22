@@ -858,7 +858,7 @@ def get_ngcc_solvent_cost(self):
     rich_solvent_pump_account = ["8.3"]
     self.b30 = pyo.Block()
     
-    # Consider 10 % margin when computing the rich solvent rated Fflowrate
+    # Consider 10% margin when computing the rich solvent rated flowrate
     # based on the flowsheet rich solvent volumetric flowrate (defined in the 
     # absorber section subflowsheet)
 
@@ -1047,14 +1047,6 @@ def get_ngcc_solvent_cost(self):
         expr=sum(self.b37.total_plant_cost[ac] for ac in lean_solvent_pump_account)
         )
     
-    # block 38 is skipped (lean solvent cooling related block) as the IDAES 
-    # carbon capture flowsheet does not have lean solvent cooling
-    # TODO: add lean solvent cooling costs as option
-    
-    # block 39 is skipped (solvent stripper reclaimer related block) as it is 
-    # a function of solvent makeup and the IDAES carbon capture flowsheet does 
-    # not have solvent makeup (MEA is considered non-volatile for now)
-    # TODO: figure out whether we need to include solvent stripper reclaimer costs 
     
     # Solvent filtration
     solvent_filtration_account = ["18.3"]

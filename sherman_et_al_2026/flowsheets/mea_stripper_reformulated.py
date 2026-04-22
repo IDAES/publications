@@ -315,7 +315,6 @@ class MEAStripperFlowsheetData(FlowsheetBlockData):
         ## Stripper condenser area calculation
         COND = self.condenser
 
-        # Assume heat transfer coefficient (arbitrary value for now)
         COND.overall_heat_transfer_coefficient = pyo.Param(
             initialize=375, mutable=False, units=pyo.units.W/pyo.units.m**2/pyo.units.K)  # W/m2.K
         
@@ -637,7 +636,8 @@ class MEAStripperFlowsheetData(FlowsheetBlockData):
         self.reboiler.activate()
         self.column_liquid_outlet.expanded_block.activate()
         propagate_state(self.column_liquid_outlet)
-        # TODO: Bug in reboiler initialization too
+        # Reboiler initialization requires the user to fix inlet variables before being called
+        # and unfix them after it is called.
         self.reboiler.inlet.flow_mol.fix()
         self.reboiler.inlet.temperature.fix()
         self.reboiler.inlet.pressure.fix()

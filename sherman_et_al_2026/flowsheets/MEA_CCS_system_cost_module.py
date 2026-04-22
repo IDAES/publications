@@ -153,7 +153,7 @@ def get_CO2_absorption_cost(self):
     rich_solvent_pump_account = ["8.3"]
     self.b30 = pyo.Block()
     
-    # Consider 10 % margin when computing the rich solvent rated Fflowrate
+    # Consider 10 % margin when computing the rich solvent rated flowrate
     # based on the flowsheet rich solvent volumetric flowrate (defined in the 
     # absorber section subflowsheet)
 
@@ -602,7 +602,7 @@ def get_CO2_absorption_cost(self):
     self.costing.CCS_TAC = pyo.Expression(expr=self.costing.CCS_AIC + 
                                           self.costing.CCS_AOC)  
     
-    # Total annualized cost per tonne of CO2 captured (indipendent of number of trains)
+    # Total annualized cost per tonne of CO2 captured (independent of the number of trains)
     # aka Levelized Cost of Capture (LCOC)
     self.costing.CCS_TAC_perCO2captured = pyo.Expression(
         expr=self.costing.CCS_TAC /

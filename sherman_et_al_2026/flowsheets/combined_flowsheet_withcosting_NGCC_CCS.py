@@ -356,7 +356,6 @@ class MEACombinedFlowsheetData(MEACombinedFlowsheetDataCCS):
         self.costing_setup.CO2_capture_rate = pyo.Var(
             self.time, initialize=1, units=pyo.units.lb/pyo.units.hr
             )
-        # self.costing_setup.CO2_capture_rate.fix()
         
         @self.costing_setup.Constraint(self.time)
         def calculate_CO2_capture_rate(b, t):
