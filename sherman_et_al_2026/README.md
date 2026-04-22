@@ -140,11 +140,7 @@ For a given set of CO<sub>2</sub> capture targets, say 90%, 95%, and 99%,
 the flowsheet model can be solved deterministically as follows:
 
 ```sh
-python run_combined_flowsheet_pyros_econ_obj.py \
---workflow deterministic \
---with-postsolve-costing True \
---co2-capture-targets 90 95 99 \
---results-dir $RESULTS_DIR
+python run_combined_flowsheet_pyros_econ_obj.py --workflow deterministic --with-postsolve-costing True --co2-capture-targets 90 95 99 --results-dir $RESULTS_DIR
 ```
 
 A collection of `*.csv` and `*.png` files containing the
@@ -166,12 +162,7 @@ For a given capture target and uncertainty set confidence level,
 the flowsheet model can be solved to robust optimality as follows:
 
 ```sh
-python run_combined_flowsheet_pyros_econ_obj.py  \
---workflow pyros \
---with-postsolve-costing True \
---co2-capture-targets 95 \
---pyros-confidence-levels 99 \
---results-dir $RESULTS_DIR
+python run_combined_flowsheet_pyros_econ_obj.py --workflow pyros --with-postsolve-costing True --co2-capture-targets 95 --pyros-confidence-levels 99 --results-dir $RESULTS_DIR
 ```
 
 A collection of `*.csv` and `*.png` files recording the results,
@@ -193,9 +184,7 @@ the results can be visualized and compiled into `*.csv` files,
 as follows:
 
 ```sh
-python run_combined_flowsheet_pyros_econ_obj.py  \
---workflow solve_results \
---results-dir $RESULTS_DIR
+python run_combined_flowsheet_pyros_econ_obj.py --workflow solve_results --results-dir $RESULTS_DIR
 ```
 
 The processed results are stored in
@@ -246,10 +235,7 @@ for several CO<sub>2</sub> capture targets and uncertainty set
 confidence levels, can be performed by running the command:
 
 ```sh
-./pyros_flowsheet_runs.sh \
--d $RESULTS_DIR \
--t $CO2_CAPTURE_TARGETS \
--l $CONFIDENCE_LEVELS
+./pyros_flowsheet_runs.sh -d $RESULTS_DIR -t $CO2_CAPTURE_TARGETS -l $CONFIDENCE_LEVELS
 ```
 
 in which `$CO2_CAPTURE_TARGETS` is to be replaced with
