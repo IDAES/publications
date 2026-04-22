@@ -21,13 +21,13 @@ Industry Impact (CCSI<sup>2</sup>) program.
 <a name="prerequisites"></a>
 ### Prerequisites
 
-In advance of successfully running the code in the present directory,
+In advance of setting up and successfully running the code in the present directory,
 you will need working distributions of:
 
 1. [Python](https://docs.python.org/3/using/index.html) 3.9, 3.10, 3.11, or 3.12.
 
 2. [GAMS](https://www.gams.com/49/docs/UG_MAIN.html#UG_INSTALL)
-   (49 or later recommended).
+   (49 or later recommended), with a valid full commercial/academic license.
 
 3. [IPOPT](https://coin-or.github.io/Ipopt/INSTALL.html),
    with access to
@@ -35,9 +35,9 @@ you will need working distributions of:
    Alternatively, IPOPT can be installed
    [as an extension of the IDAES-pse software package](
       https://idaes-pse.readthedocs.io/en/stable/tutorials/getting_started/index.html
-   )
-   after [installing the Python dependencies](#dependencies)
-   for the present codebase.
+   ),
+   [after installing the Python dependencies](#idaesextensions)
+   during setup of the present codebase.
 
 4. LaTeX, which we recommend setting up by
    [installing TeX Live](https://www.tug.org/texlive/).
@@ -57,6 +57,15 @@ you will need working distributions of:
    [corresponding Matplotlib documentation page](
       https://matplotlib.org/stable/users/explain/text/usetex.html
    ).
+
+If you intend to run a [full computational study](#fullstudy)
+similar to that of the published paper, then you will also need:
+
+5. [GNU Screen (`screen`)](https://www.gnu.org/software/screen/).
+
+6. Access to a system that contains more available CPU cores than
+   the number of CO<sub>2</sub> capture targets that you wish to
+   study.
 
 Note that the published results were produced with Python 3.12.11,
 GAMS 49.6.1, IPOPT 3.13.2/MA57, and are tied to
@@ -99,10 +108,17 @@ In a UNIX terminal, you may set up the present package as follows:
    Note that the [IDAES-pse](https://github.com/IDAES/idaes-pse)
    and [Pyomo](https://github.com/Pyomo/pyomo)
    software packages are automatically installed as dependencies.
-   If an IPOPT distribution is not already available on your
+
+<a name="idaesextensions"></a>
+
+4. If an IPOPT distribution is not already available on your
    system, you may now install IPOPT as an extension of the
-   IDAES-pse package
-   (using ``idaes get-extensions``)
+   IDAES-pse package, using:
+
+   ```sh
+   idaes get-extensions
+   ```
+
    according to the
    [IDAES installation guide](
       https://idaes-pse.readthedocs.io/en/stable/tutorials/getting_started/index.html
@@ -112,7 +128,7 @@ In a UNIX terminal, you may set up the present package as follows:
       https://idaes-pse.readthedocs.io/en/stable/tutorials/getting_started/binaries.html
    ).
 
-4. (Optional, but recommended) Test your setup:
+5. (Optional, but recommended) Test your setup:
 
    ```sh
    pytest -v test_mea_fs_costing_pyros.py
@@ -204,11 +220,12 @@ For more information on using the `run_combined_flowsheet_pyros_econ_obj.py`
 script, run `run_combined_flowsheet_pyros_econ_obj.py --help`
 in your terminal.
 
+<a name="fullstudy"></a>
 
 ### Running a Full Computational Study
 
 In advance of running a full computational study, you will need to
-empty or delete ``$RESULTS_DIR`` before proceeding and:
+empty or delete ``$RESULTS_DIR`` and:
 
 1. Ensure that you have a working distribution of
    [GNU Screen (`screen`)](https://www.gnu.org/software/screen/) installed
