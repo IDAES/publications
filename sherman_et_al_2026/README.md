@@ -69,8 +69,8 @@ similar to that of the published paper, then you will also need:
 
 Note that the published results were produced with Python 3.12.11,
 GAMS 49.6.1, IPOPT 3.13.2/MA57, and are tied to
-[commit 9aac556](
-	https://github.com/IDAES/publications/tree/9aac556aca25ed2dc58245452f402cc51f774e60
+[commit c84b9dd](
+	https://github.com/shermanjasonaf/publications/tree/c84b9ddad97bf06634f1ab084ff6b1d503c429a7
 )
 of the present repository.
 
