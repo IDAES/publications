@@ -71,7 +71,7 @@ of the present repository.
 In a UNIX terminal, you may set up the present package as follows:
 
 1. Clone the online repository containing this directory
-   to your desired location, which we refer to as `$MEA_DIR`:
+   to your desired location, which we refer to as `$REPO_DIR`:
 
    ```sh
    git clone https://github.com/IDAES/publications.git
@@ -81,10 +81,10 @@ In a UNIX terminal, you may set up the present package as follows:
    of the cloned repository:
 
    ```sh
-   cd sherman_et_al_2026
+   cd $REPO_DIR/sherman_et_al_2026
    ```
 
-   We hereby use `$MEA_DIR` to denote the location of this directory
+   We hereby use `$MEA_DIR` to denote the location of this subdirectory
    on your file system.
 
 <a name="dependencies"></a>
@@ -208,7 +208,7 @@ in your terminal.
 ### Running a Full Computational Study
 
 In advance of running a full computational study, you will need to
-ensure that `$RESULTS_DIR` is empty (or does not exist) and:
+empty or delete ``$RESULTS_DIR`` before proceeding and:
 
 1. Ensure that you have a working distribution of
    [GNU Screen (`screen`)](https://www.gnu.org/software/screen/) installed
