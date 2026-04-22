@@ -89,7 +89,7 @@ In a UNIX terminal, you may set up the present package as follows:
 
 <a name="dependencies"></a>
 
-2. In a Python virtual environment, install the dependencies
+3. In a Python virtual environment, install the dependencies
    that were used with the present package:
 
    ```sh
@@ -112,7 +112,7 @@ In a UNIX terminal, you may set up the present package as follows:
       https://idaes-pse.readthedocs.io/en/stable/tutorials/getting_started/binaries.html
    ).
 
-3. (Optional, but recommended) Test your setup:
+4. (Optional, but recommended) Test your setup:
 
    ```sh
    pytest -v test_mea_fs_costing_pyros.py
