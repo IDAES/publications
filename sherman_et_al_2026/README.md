@@ -5,8 +5,10 @@
 This directory contains the source code accompanying the paper:
 
 > J.A.F. Sherman, A.G. Ostace, D.A. Allan, C.E. Gounaris,
-"Robust Optimization of an MEA-Based Post-Combustion Carbon Capture
-Process at High Carbon Capture Rates". Submitted for publication, 2026.
+"Designing a Robust MEA-Based Post-Combustion Carbon Capture Process
+with Capture Rate Guarantees."
+*Industrial & Engineering Chemistry Research*, 65(25): 13220--13240. 2026.
+DOI: [10.1021/acs.iecr.6c00102](https://doi.org/10.1021/acs.iecr.6c00102)
 
 If you find the contents of this directory useful for your research,
 please consider citing the paper.
